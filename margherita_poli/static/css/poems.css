@@ -1,0 +1,203 @@
+.body-poems {
+  position: relative;
+}
+.p-content {
+  column-count: 3; /* numero di colonne */
+  column-gap: 5px;
+  max-width: 80%;
+  margin-inline: auto;
+  margin-top: 50px;
+  overflow-y: scroll;
+  padding-bottom: 80px;
+}
+.p-content__img {
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  break-inside: avoid;
+  padding-block: 2px;
+  background-color: #fff;
+}
+.p-content__img img {
+  padding-top: 10px;
+  width: auto;
+  max-width: 100%;
+  height: auto; /* altezza completamente variabile */
+  break-inside: avoid; /* evita la rottura dell'immagine tra le colonne */
+  margin-bottom: 20px;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer;
+}
+.p-content > .p-content__img:nth-of-type(1) {
+  margin-top: 80px;
+}
+.p-content > .p-content__img:nth-of-type(10) {
+  margin-top: 45px;
+}
+
+.p-content__img:nth-of-type(2)::before,
+.p-content__img:nth-of-type(4)::before,
+.p-content__img:nth-of-type(11)::before,
+.p-content__img:nth-of-type(13)::before {
+  background-color: rgba(173, 216, 230, 0.55);
+}
+.p-content__img:nth-of-type(5)::before,
+.p-content__img:nth-of-type(9)::before,
+.p-content__img:nth-of-type(7)::before {
+  background-color: rgba(173, 216, 230, 0.65);
+}
+.p-content__img:nth-of-type(6)::before,
+.p-content__img:nth-of-type(8)::before {
+  background-color: rgba(173, 216, 230, 0.45);
+}
+.p-content__img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(173, 216, 230, 0.25);
+  transition: background 0.3s ease;
+  pointer-events: none;
+}
+.p-content__img:hover::before {
+  background: transparent;
+}
+
+@media (max-width: 750px) {
+  .p-content {
+    column-count: 1;
+    column-gap: 0px;
+  }
+  .p-content > .p-content__img:nth-of-type(1),
+  .p-content > .p-content__img:nth-of-type(10) {
+    margin-top: 0;
+  }
+  .p-content > .p-content__img:last-child {
+    margin-bottom: 50px;
+  }
+}
+
+/* ============ OPEN MODAL =========== */
+.p-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 55;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.p-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.p-modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  margin: auto;
+  margin-top: 70px;
+  z-index: 66;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.p-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+.p-modal__content {
+  height: auto;
+  width: fit-content;
+  margin: auto;
+  padding: 0px;
+}
+.p-modal__content img {
+  width: auto;
+  max-width: 80dvw;
+  height: auto;
+  max-height: 80dvh;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0px;
+}
+
+/* ========== POESIA GIORNALIERA ========== */
+.p-daily {
+  container-type: inline-size;
+  margin-top: 80px;
+  width: 95%;
+  margin-inline: auto;
+  padding-inline: 10px;
+  padding-block: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
+  background-color: var(--background-tertiary);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+.p-daily__content {
+  margin-block: 35px auto;
+  background-color: var(--background-secondary);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  height: fit-content;
+  padding: 2cqw;
+  border-radius: 20px;
+  border: none;
+}
+.p-daily__content-title {
+  font-size: clamp(1rem, 5cqw, 1.8rem);
+  color: var(--color-primary);
+  font-weight: 500;
+  letter-spacing: 0.7px;
+  white-space: nowrap;
+}
+.p-daily__images {
+  position: relative;
+  width: clamp(200px, 50cqw, 300px);
+  height: auto;
+  padding: 20px 40px;
+  border-radius: 10px;
+  background-color: var(--background-secondary);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.p-daily__images img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 1;
+}
+.p-daily__images::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(173, 216, 230, 0.45);
+  transform-origin: bottom;
+  transition: height 0.5s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.p-daily__images:hover::before {
+  height: 0;
+}
+
+@media (min-width: 750px) {
+  .p-daily {
+    width: 50%;
+  }
+}

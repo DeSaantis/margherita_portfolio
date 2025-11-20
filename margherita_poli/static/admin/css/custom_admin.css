@@ -1,0 +1,19 @@
+/* Titolo piccolo */
+.field-title .ck.ck-content.ck-editor__editable,
+.field-title_en .ck.ck-content.ck-editor__editable,
+.field-section .ck.ck-content.ck-editor__editable,
+.field-section_en .ck.ck-content.ck-editor__editable {
+  min-height: 50px !important;
+}
+
+/* Descrizione più grande */
+.field-description .ck.ck-content.ck-editor__editable,
+.field-description_en .ck.ck-content.ck-editor__editable {
+  min-height: 200px !important;
+}
+
+/* Descrizione più grande */
+.field-details .ck.ck-content.ck-editor__editable,
+.field-details_en .ck.ck-content.ck-editor__editable {
+  min-height: 100px !important;
+}

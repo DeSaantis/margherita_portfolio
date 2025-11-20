@@ -1,0 +1,255 @@
+.nav {
+  background: var(--background-primary);
+  position: sticky;
+  top: 0;
+  padding-inline: 8px;
+  padding-block: 15px;
+  height: 70px;
+  box-shadow: 0 10px 4px -4px rgba(0, 0, 0, 0.1);
+  z-index: 110;
+}
+/* ---------- BARRA DI NAVIGAZIONE OLTRE I 900px ---------- */
+.nav.lg {
+  display: flex;
+  flex-direction: row;
+  z-index: 100;
+}
+.nav.lg .brand {
+  flex: 1 1 20%;
+  align-content: center;
+  padding-left: 20px;
+}
+.nav.lg .brand a {
+  font-size: 25px;
+  line-height: 1;
+  margin-block: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  font-weight: 400;
+  color: var(--color-secondary);
+}
+.nav.lg .menu {
+  display: flex;
+  flex: 1 1 70%;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 40px;
+}
+.nav.lg .menu a {
+  text-decoration: none;
+  line-height: 1;
+  font-size: 17px;
+  white-space: nowrap;
+  color: var(--color-secondary);
+}
+.nav.lg .menu a:last-child {
+  margin-right: 30px;
+}
+.nav.lg .trans {
+  display: flex;
+  flex-direction: row-reverse;
+  flex: 1 1 10%;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3px;
+  cursor: default;
+}
+.nav.lg .trans .btnTrans {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  font-size: 13px;
+  border: none;
+  background: transparent;
+}
+.nav .trans span {
+  /* per entrambe le nav (.lg .sl) */
+  letter-spacing: 1px;
+  font-weight: 100;
+  color: #fff;
+  font-family: var(--font-primary);
+}
+.nav.lg .trans .globe {
+  width: 40px;
+  cursor: pointer;
+}
+.nav .trans .globe svg + svg {
+  display: none;
+}
+
+/* ---------- BARRA DI NAVIGAZIONE SOTTO I 900px ---------- */
+.nav.sl {
+  display: none;
+}
+
+/* ---------- IMPOSTAZIONI PER CAMBIARE NAVBAR ---------- */
+@media (max-width: 900px) {
+  .nav.lg {
+    display: none;
+  }
+  .nav.sl {
+    display: flex;
+    flex-direction: row;
+    z-index: 100;
+  }
+}
+
+/* ---------- BARRA DI NAVIGAZIONE SOTTO I 900px ---------- */
+.nav.sl .brand {
+  flex: 1 1 20%;
+  align-content: center;
+}
+.nav.sl .brand a {
+  font-size: clamp(1rem, 6vw, 1.5rem);
+  line-height: 1;
+  margin-block: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  padding-left: 20px;
+  color: var(--color-secondary);
+}
+.nav.sl .trans {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3px;
+  cursor: default;
+}
+.nav.sl .trans .btnTrans {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  font-size: 13px;
+  border: none;
+  background: transparent;
+}
+.nav.sl .trans .globe {
+  width: clamp(30px, 7vw, 40px);
+  cursor: pointer;
+}
+.nav.sl .menu {
+  display: flex;
+  flex: 1 1 10%;
+  justify-content: flex-end;
+  align-items: center;
+  gap: clamp(5px, 2vw, 20px);
+}
+.nav.sl .btnMenu {
+  padding-inline: clamp(7px, 2vw, 15px);
+  padding-block: clamp(5px, 3vw, 12px);
+  align-content: center;
+  box-shadow: 0 0 1px #f1f1f1;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background: transparent;
+  font-size: clamp(12px, 2vw, 17px);
+  line-height: 1;
+  white-space: nowrap;
+  height: fit-content;
+  width: fit-content;
+  color: #f1f1f1;
+}
+.nav.sl .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  overflow: hidden;
+  z-index: 101;
+}
+.nav.sl .overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.nav.sl .offcanvas {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  right: -325px;
+  width: 325px;
+  height: 100dvh;
+  background: #003049;
+  z-index: 102;
+  transition: right 0.3s ease;
+}
+.nav.sl .offcanvas.active {
+  right: 0;
+}
+.nav.sl .btnClose {
+  width: fit-content;
+  margin-block: 25px 15px;
+  margin-inline: auto 25px;
+  border: none;
+  background: transparent;
+  font-size: 40px;
+  font-weight: 100;
+  cursor: pointer;
+  color: #f1f1f1;
+}
+.nav.sl .offcanvas h2 {
+  width: fit-content;
+  margin-inline: auto;
+  margin-block: 0 70px;
+  color: #f1f1f1;
+}
+.nav.sl .offcanvas a {
+  margin-inline: 30px 0;
+  margin-block: 0 50px;
+  text-decoration: none;
+  font-size: 17px;
+  color: var(--color-secondary);
+}
+.nav.sl .offcanvas a:last-child {
+  margin-bottom: 0;
+}
+/* ---------- EFFETTO CLICK SU MENU ----------*/
+.nav a {
+  position: relative;
+  width: fit-content;
+}
+.nav.lg a {
+  padding-bottom: 2px;
+}
+.nav.lg .menu a:nth-child(3) {
+  padding-bottom: 5px;
+}
+.nav.sl .offcanvas a:nth-child(5) {
+  padding-bottom: 2px;
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav a.disable {
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+.nav a.disable:hover {
+  opacity: 1;
+}
+.nav a.disable:hover::after {
+  transform: scaleX(1);
+}
+.nav a.active {
+  font-weight: 450;
+}

@@ -1,0 +1,98 @@
+.body-illustrator {
+  position: relative;
+}
+.i-content {
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonne uguali */
+  gap: 20px;
+  width: 100%;
+  padding-inline: 10%;
+  padding-block: 40px 80px;
+}
+.i-content__img {
+  position: relative;
+  align-self: center;
+  width: 30cqw;
+  height: 30cqw;
+  margin: auto;
+  cursor: pointer;
+}
+.i-content__img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.i-content__img:hover::before {
+  opacity: 1;
+}
+.i-content__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+@media (min-width: 750px) {
+  .i-content {
+    margin-block: 40px;
+    padding-inline: 15%;
+  }
+}
+/* ============ OPEN MODAL =========== */
+.i-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 55;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.i-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.i-modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  margin: auto;
+  margin-top: 70px;
+  z-index: 66;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.i-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+.i-modal__content {
+  height: auto;
+  width: fit-content;
+  margin: auto;
+  padding: 0px;
+}
+.i-modal__content img {
+  width: auto;
+  max-width: 80dvw;
+  height: auto;
+  max-height: 80dvh;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), /* ombra leggera sotto */ 0 1px 3px rgba(0, 0, 0, 0.12); /* dettaglio soft */
+}

@@ -1,0 +1,106 @@
+.f-container {
+  container-type: inline-size;
+  width: 100%;
+  background-color: var(--background-primary);
+  padding-block: 10px;
+}
+.f-content {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 20px;
+}
+.f-content__brand {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-secondary);
+}
+.f-content__brand-title {
+  flex: 1;
+  font-size: 7cqw;
+  text-transform: uppercase;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.f-content__brand-social {
+  margin-top: 20px;
+  flex: 1;
+  display: flex;
+  gap: 50px;
+}
+
+.f-content__brand-social .social {
+  max-width: 40px;
+}
+.f-content__hr {
+  margin-block: 20px;
+  width: 80%;
+  height: 2px;
+  margin-inline: auto;
+  border: none;
+  background: var(--background-secondary);
+}
+.f-content__items {
+  flex: 1;
+  display: flex;
+  padding-inline: 10px;
+  justify-content: space-between;
+}
+.f-content__item {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-secondary);
+  gap: 15px;
+}
+.f-content__item-title {
+  font-weight: 550;
+  font-size: clamp(1rem, 4.3cqw, 1.5rem);
+}
+.f-content__item-link {
+  width: fit-content;
+  font-size: clamp(1rem, 3.5cqw, 1.3rem);
+  text-decoration: none;
+  color: var(--color-secondary);
+}
+.t-container__copyright {
+  margin-top: 30px;
+  color: var(--color-secondary);
+  text-align: center;
+  font-size: 1rem;
+}
+.f-content__item-link.active {
+  border-bottom: 1px solid var(--color-secondary);
+}
+@media (min-width: 750px) {
+  .f-container {
+    padding-block: 20px 10px;
+  }
+  .f-content {
+    flex-direction: row;
+    padding-bottom: 30px;
+  }
+  .f-content__brand {
+    flex: 0 0 40%;
+    justify-content: center;
+    padding-right: 80px;
+  }
+  .f-content__brand-title {
+    display: flex;
+    align-items: flex-end;
+    font-size: clamp(1.8rem, 3cqw, 2.2rem);
+  }
+  .f-content__hr {
+    display: none;
+  }
+  .f-content__items {
+    flex: 0 0 55%;
+  }
+  .f-content__item-title {
+    font-weight: 450;
+    font-size: clamp(1.2rem, 3cqw, 1.5rem);
+  }
+  .f-content__item-link {
+    font-size: 1rem;
+  }
+}

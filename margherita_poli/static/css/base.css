@@ -1,0 +1,44 @@
+:root {
+  --color-primary: #003049;
+  --color-secondary: #f1f1f1;
+  --background-primary: #003049;
+  --background-secondary: #f5f7fa;
+  --background-tertiary: #accde1;
+  --font-primary: "EBGaramond";
+  --font-secondary: "Lato";
+}
+
+@font-face {
+  font-family: "EBGaramond";
+  src: url("/static/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("/static/fonts/Lato-Regular.ttf") format("truetype");
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-primary);
+}
+
+.main-content {
+  flex: 1;
+  background-color: var(--background-secondary);
+}

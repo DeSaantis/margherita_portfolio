@@ -1,17 +1,28 @@
 # Environment variables
 .env
 
-# Byte-compiled / cache
+# Cache files
+CACHE/
 __pycache__/
+
+# OS files
+.DS_Store
+*/.DS_Store
+
+# Media and uploaded files (non vanno su git)
+media/
+margherita_poli/files/
+*.jpg
+*.jpeg
+*.png
+*.jfif
+
+# SSL certificates (mai su git)
+cert.pem
+key.pem
+
+# Byte-compiled Python files
 *.pyc
 
-# Django stuff
+# Django SQLite DB (solo locale)
 db.sqlite3
-
-# Static and media (generated)
-static/
-media/
-
-# IDE stuff
-.vscode/
-.idea/
