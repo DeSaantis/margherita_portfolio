@@ -1,0 +1,171 @@
+
+<style>
+body { font-family: 'Inter', sans-serif; background: #f0f2f5; }
+
+h1, h2 { text-align: center; color: #1e293b; }
+
+.form-container {
+    max-width: 700px; 
+    margin: 20px auto; 
+    padding: 30px; 
+    background: #ffffff; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    transition: transform 0.3s ease;
+}
+.form-container:hover {
+    transform: translateY(-3px);
+}
+
+.image-preview {
+    width: 220px; 
+    height: 220px; 
+    border: 2px solid #cbd5e1; 
+    border-radius: 15px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.image-preview:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.image-preview img {
+    max-width: 100%; 
+    max-height: 100%; 
+    object-fit: contain;
+}
+
+.form-fields { flex: 1; }
+
+.form-fields p { margin-bottom: 15px; }
+
+.form-fields input[type="text"],
+.form-fields input[type="number"],
+.form-fields input[type="file"],
+.form-fields select,
+.form-fields textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.form-fields input:focus,
+.form-fields select:focus,
+.form-fields textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    background: #ffffff;
+}
+
+form button { 
+    background: #3b82f6; 
+    border: none; 
+    color: #fff; 
+    font-weight: bold;
+    padding: 12px 25px; 
+    border-radius: 15px; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+form button:hover { 
+    background: #2563eb; 
+    transform: translateY(-2px);
+}
+
+.message { 
+    max-width: 700px; 
+    margin: 10px auto; 
+    padding: 12px 20px; 
+    border-radius: 12px; 
+    background: #d1fae5; 
+    color: #065f46; 
+    text-align: center; 
+    font-weight: 500;
+    box-shadow: 0 0 10px #065f55;
+}
+.paintings-list { max-width: 900px; margin: 30px auto; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.painting-card { width: 220px; padding: 10px; background: #fff; border-radius: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.1); text-align: center; }
+.painting-card img { max-width: 100%; border-radius: 10px; }
+.painting-card h3 { margin: 10px 0 5px 0; font-size: 18px; }
+.painting-card p { font-size: 14px; margin: 0 0 10px 0; }
+.painting-card .price { font-weight: bold; }
+.painting-card .btn { display: inline-block; margin-top: 5px; padding: 5px 10px; border-radius: 5px; border: 1px solid #0f172a; color: #0f172a; text-decoration: none; transition: all 0.3s; }
+.painting-card .btn:hover { background: #0f172a; color: #fff; }
+
+</style>
+
+<h1>Gestione Dipinti</h1>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="message">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+<h2>{% if editing %}Modifica Dipinto{% else %}Aggiungi Nuovo Dipinto{% endif %}</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if editing %}
+        <input type="hidden" name="edit_id" value="{{ form.instance.id }}">
+    {% endif %}
+    
+    <div class="form-container">
+        <!-- Anteprima immagine -->
+        <div class="image-preview">
+            {% if form.instance.image %}
+                <img id="preview" src="{{ form.instance.image.url }}" alt="Anteprima">
+            {% else %}
+                <span>Nessuna immagine</span>
+            {% endif %}
+        </div>
+
+        <!-- Campi del form -->
+        <div class="form-fields">
+            {{ form.as_p }}
+            <button type="submit">{% if editing %}Aggiorna{% else %}Salva{% endif %}</button>
+        </div>
+    </div>
+</form>
+
+<h2>Lista Dipinti</h2>
+<div class="paintings-list">
+    {% for painting in paintings %}
+    <div class="painting-card">
+        <img src="{{ painting.image.url }}" alt="{{ painting.title }}">
+        <h3>{{ painting.title }}</h3>
+        <p>{{ painting.description|truncatechars:50 }}</p>
+        <p class="price">{{ painting.price }} €</p>
+        <a href="{% url 'margherita_poli:paintings_admin' %}?edit_id={{ painting.id }}" class="btn">Modifica</a>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+// Mostra anteprima immagine selezionata
+const inputImage = document.querySelector('input[type="file"]');
+const preview = document.getElementById('preview');
+
+if(inputImage && preview){
+    inputImage.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if(file){
+            preview.src = URL.createObjectURL(file);
+        }
+    });
+}
+</script>

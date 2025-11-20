@@ -1,0 +1,87 @@
+{% extends "margherita_poli/base.html" %} 
+{% load static %} 
+{% block extra_css %}
+<link href="{% static 'css/checkout_success.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %} 
+{% block title %}Margherita Poli | Insegnante{% endblock %}
+
+<!-- ============= Classe body diversa da base.html ============== -->
+{% block body_class %}body-checkout_success{% endblock%} {% block content%}
+
+<!-- ============= -->
+
+<div class="c-success">
+  <div class="c-success__top">
+    <h1 class="c-success__top-title">Grazie per aver scelto una delle mie opere</h1><div class="heart" data-json="{% static 'icons/heart.json' %}"></div>
+  </div>
+  <p class="c-success__top-desc">A breve riceverai un’email con tutti i dettagli dell’ordine.</p>
+
+  <div class="c-success__container">
+    <div class="c-success__content">
+        {% for item in items %}
+        <div class="c-success__items">
+          
+          <div class="c-success__item-img">
+            <img src="{{ item.painting.image.url }}" alt="{{ item.title }}" />
+          </div>
+
+          <div class="c-success__item-desc">
+
+            <p class="c-success__item-title">{{ item.painting.localized_title|safe }}</p>
+            <p class="c-success__item-details">{{ item.painting.localized_details|safe }}</p>
+          </div>
+
+          <div class="c-success__item-price">
+            {{ item.price }} €
+          </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    <div class="c-success__summary">
+
+      <!-- Dati del cliente -->
+      <div class="c-success__summary-content">
+        <h3 class="c-success__summary-title">Dati cliente</h3>
+
+        <p class="c-success__summary-name"><strong>{{ order.customer_name }}</strong></p>
+        <p class="c-success__summary-address">{{ order.customer_address }}, {{ order.customer_city }} {{ order.customer_zip }}</p>
+        <p class="c-success__summary-region">{{ order.customer_region }}, {{ order.customer_country }}</p>
+
+      </div>
+
+      <hr class="c-success__summary-hr" />
+
+      <!-- Totali -->
+      <div class="c-success__summary-section">
+
+        <p class="summary-line">
+          <span>Subtotale</span>
+          <span>{{ subtotal }} €</span>
+        </p>
+
+        <p class="summary-line">
+          <span>Spedizione</span>
+          <span>{{ shipping }} €</span>
+        </p>
+
+        <hr class="c-success__summary-hr" />
+
+        <p class="summary-line summary-total">
+          <span><strong>Totale</strong></span>
+          <span><strong>{{ total }} €</strong></span>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <a class="c-success__back" href="{% url 'margherita_poli:paintings_all' %}">Torna ai dipinti</a>
+</div>
+
+<!-- ============= -->
+{% endblock content%} {% block extra_js %}
+<script src="{% static 'js/success.js' %}"></script>
+{% endblock %}

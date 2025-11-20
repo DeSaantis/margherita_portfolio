@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Conferma ordine</title>
+
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f6f6f6;
+    }
+
+    .email-container {
+        background: #ffffff;
+        margin: 30px auto;
+        padding: 30px 25px;
+        border-radius: 10px;
+        max-width: 600px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    }
+
+    h1 {
+        color: #003049;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .order-info p {
+        font-size: 15px;
+        margin: 5px 0;
+        color: #333;
+    }
+
+    .item {
+        border-bottom: 1px solid #eee;
+        padding: 10px 0;
+    }
+
+    .item-title {
+        font-weight: bold;
+    }
+
+    .footer {
+        text-align: center;
+        font-size: 13px;
+        margin-top: 25px;
+        color: #777;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="email-container">
+
+    <h1>Grazie per il tuo ordine!</h1>
+
+    <div class="order-info">
+        <p><strong>Ordine n°:</strong> {{ order.id }}</p>
+        <p><strong>Cliente:</strong> {{ order.customer_name }}</p>
+        <p><strong>Email:</strong> {{ order.customer_email }}</p>
+        <p><strong>Data:</strong> {{ order.created_at|date:"d/m/Y H:i" }}</p>
+    </div>
+
+    <h2>Dettagli spedizione</h2>
+    <div class="order-info">
+        <p>{{ order.customer_address }}</p>
+        <p>{{ order.customer_zip }} {{ order.customer_city }} ({{ order.customer_region }})</p>
+        <p>{{ order.customer_country }}</p>
+    </div>
+
+    <h2>Articoli ordinati</h2>
+
+    <table style="width:100%; border-collapse: collapse; margin-bottom: 20px;">
+        {% for item in items %}
+        <tr style="border-bottom: 1px solid #ddd; padding: 10px 0;">
+            
+            <!-- IMMAGINE -->
+            <td style="width: 120px; padding: 10px;">
+                <img src="{{ item.image }}" alt="" style="width:100px; border-radius: 6px;">
+            </td>
+
+            <!-- DETTAGLI -->
+            <td style="padding:10px;">
+                <p style="margin:0; font-size:16px;"><strong>{{ item.title|safe }}</strong></p>
+                <p style="margin:0; color:#555;">{{ item.price }} €</p>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    <table width="100%" cellpadding="0" cellspacing="0" 
+    style="margin-top:25px; background:#f4f4f4; padding:15px; border-radius:8px;">
+        <tr>
+            <td style="text-align:left; font-size:15px; padding-block: 5px">Subtotale</td>
+            <td style="text-align:right; font-size:15px; padding-block: 5px">{{ subtotal }} €</td>
+        </tr>
+
+        <tr>
+            <td style="text-align:left; font-size:15px; padding-block: 5px">Spedizione</td>
+            <td style="text-align:right; font-size:15px; padding-block: 5px">{{ shipping }} €</td>
+        </tr>
+
+        <tr>
+            <td style="text-align:left; font-weight:bold; font-size:16px; padding-block: 5px">Totale</td>
+            <td style="text-align:right; font-weight:bold; font-size:16px; padding-block: 5px">{{ total }} €</td>
+        </tr>
+    </table>
+
+
+
+    <p class="footer">
+        Riceverai una notifica quando il tuo ordine sarà spedito.<br>
+        Grazie per aver scelto l’arte di Margherita Poli 🎨
+    </p>
+
+</div>
+
+</body>
+</html>

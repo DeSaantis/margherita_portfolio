@@ -1,0 +1,34 @@
+{% extends "margherita_poli/base.html" %} 
+{% load static %} 
+{% load i18n %}
+{% block extra_css %}
+<link href="{% static 'css/base_artist.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %} {% block title %}Margherita Poli | {% trans "Artista" %}{% endblock %} {% block content%}
+<div class="a-header">
+  <p class="a-header__title">{% trans "Artista" %}</p>
+  <div class="a-header__content">
+    <a
+      class="a-header__content-item {% if current_section == 'paintings' %}a-header__content--active{% else %}a-header__content--disable{% endif %}"
+      href="{% url 'margherita_poli:paintings_all' %}">{% trans "Dipinti" %}</a>
+
+    <a
+      class="a-header__content-item {% if current_section == 'poems' %}a-header__content--active{% else %}a-header__content--disable{% endif %}"
+      href="{% url 'margherita_poli:poems' %}">{% trans "Poesie" %}</a>
+
+    <a
+      class="a-header__content-item {% if current_section == 'illustration' %}a-header__content--active{% else %}a-header__content--disable{% endif %}"
+      href="{% url 'margherita_poli:illustrator' %}">{% trans "Illustrazioni" %}</a>
+
+    <a
+      class="a-header__content-item {% if current_section == 'exhibition' %}a-header__content--active{% else %}a-header__content--disable{% endif %}"
+      href="{% url 'margherita_poli:exhibitions' %}">{% trans "Esposizioni" %}</a>
+
+  </div>
+  <hr class="a-header__item" />
+</div>
+{% block artist_content %}
+{% endblock %} 
+{% endblock content%} 
+{% block extra_js %}
+<script src="{% static 'js/base_artist.js' %}"></script>
+{% endblock %}

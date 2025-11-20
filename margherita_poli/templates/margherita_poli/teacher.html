@@ -1,0 +1,331 @@
+{% extends "margherita_poli/base.html" %} 
+{% load static %} 
+{% load i18n %}
+
+{% block extra_css %}
+<link href="{% static 'css/teacher.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %} 
+
+{% block title %}Margherita Poli | {% trans "Insegnante" %}{% endblock %}
+
+{% block body_class %}body-teacher{% endblock%} 
+
+{% block content%}
+<!-- ---------- Pulsante Contattami ---------- -->
+<div class="slack" data-json="{% static 'icons/slack.json' %}"></div>
+
+<!-- ---------- INTRO Pagina Teacher ---------- -->
+<div class="t-header">
+  <h1 class="t-header__title">{% trans "Insegnante Privata" %}</h1>
+  <p class="t-header__desc">
+    {% blocktrans trimmed %}
+    Mi chiamo Margherita, sono laureata in Lettere e da diversi anni mi dedico all’insegnamento in molteplici forme e contesti.
+    {% endblocktrans %}
+    <br />
+    {% blocktrans trimmed %}
+    La mia esperienza spazia dalla scuola primaria, alla secondaria di primo grado, alla secondaria di secondo grado, 
+    fino all’università, sia in Italia che all’estero, e copre sia materie scolastiche che attività artistiche. 
+    Accompagno gli studenti in percorsi personalizzati, supportandoli nello studio quotidiano durante tutto l’anno, 
+    nella preparazione di verifiche, interrogazioni ed esami.
+    {% endblocktrans %}
+    <br />
+    {% blocktrans trimmed %}
+    Il mio approccio è flessibile e personalizzato: 
+    definisco il percorso più adatto alle necessità e agli obiettivi dello studente.
+    {% endblocktrans %}
+  </p>
+  <button onclick="location.href='#t-form'" class="t-header__btn">
+    {% trans "Contattami" %}
+  </button>
+</div>
+
+<!-- ---------- ONDA SEPARATRICE DI SEZIONI ---------- -->
+<div class="first-wave">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path
+      d="M0,320L48,277.3C96,235,192,149,288,149.3C384,149,480,235,576,272C672,309,768,299,864,261.3C960,224,1056,160,1152,133.3C1248,107,1344,117,1392,122.7L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+    ></path>
+  </svg>
+</div>
+<!-- ---------- ONDA SEPARATRICE DI SEZIONI ---------- -->
+
+<!-- ---------- SERVIZI Pagina Teacher ---------- -->
+<div class="t-service" id="service">
+  <h2 class="t-service__title">{% trans "I miei servizi" %}</h2>
+  <div class="t-service__content">
+    <div class="t-service__content-items">
+      <div class="t-service__content-item t-service__content-item--1">
+        <div class="t-service__content-item-content">
+          <img src="{% static 'images/sfondo/book1.jpg' %}" />
+          <p>
+            {% trans "Affiancamento scolastico durante l'intero anno:" %}
+            <br />
+            {% trans "selementari, medie e superiori." %}
+          </p>
+        </div>
+      </div>
+      <button class="t-service__content-item-button" data-desc="t-service--sup">
+        &plus; {% trans "Informazioni" %}
+      </button>
+    </div>
+    <div class="t-service__content-items">
+      <div class="t-service__content-item t-service__content-item--2">
+        <div class="t-service__content-item-content">
+          <img src="{% static 'images/sfondo/uni.jpg' %}" />
+          <p>{% trans "Affiancamento universitario" %}</p>
+        </div>
+      </div>
+      <button class="t-service__content-item-button" data-desc="t-service--uni">
+        &plus; {% trans "Informazioni" %}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="t-overlay"></div>
+<div class="t-modal t-modal--sup">
+  <div class="t-support__content-items t-modal-items">
+    <div class="t-support__content-item t-support__content-item--1 t-modal-item">
+      <div class="t-support__content-item-img t-modal__content-item-img">
+        <img src="{% static 'images/sfondo/book1.jpg' %}" />
+      </div>
+      <div class="t-support__content-item-content t-modal__content-item-content">
+        <h6>{% trans "Elementari" %}: <span>{% trans "Tutte le materie" %}</span></h6>
+        <h6>{% trans "Medie" %}:<span>{% trans "Tutte le materie" %}</span></h6>
+        <h6>{% trans "Superiori" %}:<span>{% trans "Greco/Latino/Inglese/Italiano" %}</span></h6>
+        <hr class="t-modal__content-item--hr" />
+        <p>{% trans "50 minuti" %}</p>
+        <p>{% trans "25 euro" %}</p>
+      </div>
+    </div>
+    <button onclick="location.href='#t-form'" class="t-support__content-item-button">
+      {% trans "Prenota ora" %}
+    </button>
+  </div>
+</div>
+<!-- modal università -->
+<div class="t-modal t-modal--uni">
+  <div class="t-support__content-items t-modal-items">
+    <div class="t-support__content-item t-support__content-item--1 t-modal-item">
+      <div class="t-support__content-item-img t-modal__content-item-img">
+        <img src="{% static 'images/sfondo/uni.jpg' %}" />
+      </div>
+      <div class="t-support__content-item-content t-modal__content-item-content">
+        <p>
+          {% blocktrans trimmed %}
+          Assistenza nella preparazione di esami d'ingresso in ambito umanistico e 
+          affiancamento nella preparazione di esami umanistici.
+          {% endblocktrans %}
+        </p>
+        <hr class="t-modal__content-item--hr" />
+        <p>{% trans "50 minuti" %}</p>
+        <p>{% trans "30 euro" %}</p>
+      </div>
+    </div>
+    <button onclick="location.href='#t-form'" class="t-support__content-item-button">
+      {% trans "Prenota ora" %}
+    </button>
+  </div>
+</div>
+
+<div class="t-support">
+  <h2 class="t-support__title">{% trans "Specializzata in ..." %}</h2>
+  <div class="t-support__content">
+    <div class="t-support__content-items">
+      <div class="t-support__content-item t-support__content-item--1">
+        <div class="t-support__content-item-img">
+          <img src="{% static 'images/book/greco.jpg' %}" />
+        </div>
+        <div class="t-support__content-item-content">
+          <h6>{% trans "greco" %}</h6>
+          <p>{% trans "50 minuti" %}</p>
+          <p>{% trans "25 euro" %}</p>
+        </div>
+      </div>
+      <button onclick="location.href='#t-form'" class="t-support__content-item-button" onclick="location.href='#form'">
+        {% trans "Prenota ora" %}
+      </button>
+    </div>
+
+    <div class="t-support__content-items">
+      <div class="t-support__content-item t-support__content-item--2">
+        <div class="t-support__content-item-img">
+          <img src="{% static 'images/book/latino.jpg' %}" />
+        </div>
+        <div class="t-support__content-item-content">
+          <h6>{% trans "latino" %}</h6>
+          <p>{% trans "50 minuti" %}</p>
+          <p>{% trans "25 euro" %}</p>
+        </div>
+      </div>
+      <button onclick="location.href='#t-form'" class="t-support__content-item-button" onclick="location.href='#form'">
+        {% trans "Prenota ora" %}
+      </button>
+    </div>
+
+    <div class="t-support__content-items">
+      <div class="t-support__content-item t-support__content-item--3">
+        <div class="t-support__content-item-img">
+          <img src="{% static 'images/book/inglese.jpg' %}" />
+        </div>
+        <div class="t-support__content-item-content">
+          <h6>{% trans "inglese" %}</h6>
+          <p>{% trans "50 minuti" %}</p>
+          <p>{% trans "25 euro" %}</p>
+        </div>
+      </div>
+      <button onclick="location.href='#t-form'" class="t-support__content-item-button" onclick="location.href='#form'">
+        {% trans "Prenota ora" %}
+      </button>
+    </div>
+
+    <div class="t-support__content-items">
+      <div class="t-support__content-item t-support__content-item--4">
+        <div class="t-support__content-item-img">
+          <img src="{% static 'images/book/italiano.jpg' %}" />
+        </div>
+        <div class="t-support__content-item-content">
+          <h6>{% trans "italiano" %}</h6>
+          <p>{% trans "50 minuti" %}</p>
+          <p>{% trans "25 euro" %}</p>
+        </div>
+      </div>
+      <button onclick="location.href='#t-form'" class="t-support__content-item-button" onclick="location.href='#form'">
+        {% trans "Prenota ora" %}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- ONDA SEPARATRICE DI SEZIONI ---------- -->
+<div class="second-wave">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path
+      d="M0,64L48,101.3C96,139,192,213,288,208C384,203,480,117,576,85.3C672,53,768,75,864,117.3C960,160,1056,224,1152,229.3C1248,235,1344,181,1392,154.7L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+    ></path>
+  </svg>
+</div>
+<!-- ---------- ONDA SEPARATRICE DI SEZIONI ---------- -->
+
+<!-- ---------- GALLERIA Pagina Teacher ---------- -->
+<div class="t-gallery">
+  <h2 class="t-gallery__title">{% trans "Galleria" %}</h2>
+  <h6 class="t-gallery__desc">
+    {% trans "Tra lavagne, appunti e sorrisi: un racconto visivo del mio percorso." %}
+  </h6>
+  <div class="t-gallery__content">
+    <span class="t-gallery__content-arrow left">&#8592;</span>
+    <span class="t-gallery__content-arrow right">&#8594;</span>
+    <div class="t-gallery__content--effect">
+      <div class="t-gallery__content-slides">
+        <img src="{% static 'images/matter/1.png' %}" />
+        <img src="{% static 'images/matter/2.png' %}" />
+        <img src="{% static 'images/matter/3.png' %}" />
+        <img src="{% static 'images/matter/4.png' %}" />
+        <img src="{% static 'images/matter/5.png' %}" />
+        <img src="{% static 'images/matter/6.png' %}" />
+        <img src="{% static 'images/matter/7.png' %}" />
+        <img src="{% static 'images/matter/8.png' %}" />
+        <img src="{% static 'images/matter/9.png' %}" />
+        <img src="{% static 'images/student/1.jpg' %}" />
+        <img src="{% static 'images/student/2.jpg' %}" />
+        <img src="{% static 'images/student/3.jpg' %}" />
+        <img src="{% static 'images/student/4.jpg' %}" />
+        <img src="{% static 'images/student/5.jpg' %}" />
+        <img src="{% static 'images/student/6.jpg' %}" />
+        <img src="{% static 'images/student/7.jpg' %}" />
+        <img src="{% static 'images/student/8.jpg' %}" />
+        <img src="{% static 'images/student/9.jpg' %}" />
+        <img src="{% static 'images/student/10.jpg' %}" />
+        <img src="{% static 'images/student/11.jpg' %}" />
+        <img src="{% static 'images/student/12.png' %}" />
+        <img src="{% static 'images/student/13.png' %}" />
+        <img src="{% static 'images/student/14.png' %}" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- ONDA SEPARATRICE DI SEZIONI ---------- -->
+<div class="third-wave">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path
+      d="M0,320L48,277.3C96,235,192,149,288,149.3C384,149,480,235,576,272C672,309,768,299,864,261.3C960,224,1056,160,1152,133.3C1248,107,1344,117,1392,122.7L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+    ></path>
+  </svg>
+</div>
+<!-- ---------- ONDA SEPARATRICE DI SEZIONI ---------- -->
+
+<!-- ---------- CONTATTI Pagina Teacher ---------- -->
+<div class="t-contact">
+  <h2 class="t-contact__title">{% trans "Contattami" %}</h2>
+  <p class="t-contact__desc">{% trans "Lasciami un messaggio, ti risponderò appena possibile." %}</p>
+  <div class="t-contact__content">
+    <form id="t-form" class="t-form" data-url="{% url 'margherita_poli:contatto' %}">
+      {% csrf_token %}
+      <h4 class="t-form__title">{% trans "Manda un messaggio a Margherita" %}</h4>
+
+      <div class="t-form__campo t-form__campo-name">
+        <label for="fullname">{% trans "Nome completo" %}</label>
+        <input type="text" id="fullname" name="fullname" required />
+      </div>
+
+      <div class="t-form__campo t-form__campo-email">
+        <label for="email">{% trans "Email" %}</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="t-form__campo t-form__campo-text">
+        <label for="messaggio">{% trans "Messaggio" %}</label>
+        <textarea
+          id="messaggio"
+          name="messaggio"
+          rows="5"
+          placeholder="{% trans 'Scrivimi il tipo di supporto che stai cercando (lezioni private, affiancamento annuale, universitario, ecc.)' %}"
+          required
+        ></textarea>
+      </div>
+
+      <button class="t-form__button" type="submit">{% trans "Invia Messaggio" %}</button>
+    </form>
+  </div>
+</div>
+<!-- ----------- Messaggio di avvenuto successo del form ----------- -->
+
+<div id="t-modal-success" class="t-modal-form" onclick="closeModal()">
+  <div class="t-modal-content" onclick="event.stopPropagation()">
+    <h3>{% trans "Messaggio inviato con successo ✅" %}</h3>
+    <p>{% trans "Ti risponderò il prima possibile!" %}</p>
+    <button onclick="closeModal()">{% trans "Chiudi" %}</button>
+  </div>
+</div>
+
+<div id="t-modal-error" class="t-modal-form" onclick="closeModal()">
+  <div class="t-modal-content" onclick="event.stopPropagation()">
+    <h3>❌ {% trans "Errore" %}</h3>
+    <p>{% trans "Si è verificato un problema. Riprova più tardi." %}</p>
+    <button onclick="closeModal()">{% trans "Chiudi" %}</button>
+  </div>
+</div>
+
+<!-- ---------- FINE SEZIONE CONTATTAMI ---------- -->
+
+<div class="fourth-wave">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path
+      d="M0,64L48,101.3C96,139,192,213,288,208C384,203,480,117,576,85.3C672,53,768,75,864,117.3C960,160,1056,224,1152,229.3C1248,235,1344,181,1392,154.7L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+    ></path>
+  </svg>
+</div>
+{% endblock content%} 
+
+{% block extra_js %}
+<script src="{% static 'js/teacher.js' %}"></script>
+<script>
+  function closeModal() {
+    document.querySelectorAll(".t-modal-form").forEach((modal) => {
+      modal.style.display = "none";
+    });
+  }
+</script>
+{% endblock %}

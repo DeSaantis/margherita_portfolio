@@ -1,0 +1,183 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <title>Margherita Poli</title>
+  </head>
+  <body>
+    <!-- ========== overlay pagina per menu mobile ========== -->
+    <div class="i-overlay"></div>
+
+    <!-- ========== Barra di navigazione ========== -->
+    <div class="i-nav">
+      <div class="i-nav__content">
+        <h1 class="i-nav__content-brand">Margherita Poli</h1>
+      </div>
+
+      <!-- =========== Menu per mobile ========== -->
+      <div class="i-nav__mobile">
+        <p class="i-nav__mobile-title">{% trans "Menu" %}</p>
+      </div>
+
+      <!-- ============ Pulsante per tradurre ============= -->
+      <div class="i-nav__globe">
+        <form action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ redirect_to }}" />
+
+          {% get_current_language as LANGUAGE_CODE %}
+          {% if LANGUAGE_CODE == 'it' %}
+            <input type="hidden" name="language" value="en" />
+          {% else %}
+            <input type="hidden" name="language" value="it" />
+          {% endif %}
+
+          <button type="submit" class="btnGlobe">
+            <div class="globe" data-json="{% static 'icons/globe-white.json' %}"></div>
+            <span class="globe-lang">
+              {% if LANGUAGE_CODE == 'it' %} IT {% else %} EN {% endif %}
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- =========== Menu ========== -->
+    <div class="i-nav__menu">
+      <!-- Titolo menu -->
+      <p class="i-nav__menu-title">{% trans "Menu" %}</p>
+
+      <!-- pulsanti del menu -->
+      <div class="i-nav__menu-items">
+        <p class="i-nav__menu-item">
+          <a href="{% url 'margherita_poli:paintings_all' %}">{% trans "Artista" %}</a>
+        </p>
+        <p class="i-nav__menu-item">
+          <a href="{% url 'margherita_poli:teacher' %}">{% trans "Insegnante" %}</a>
+        </p>
+      </div>
+
+      <hr class="i-nav__menu-hr" />
+
+      <!-- social nel menu -->
+      <div class="i-nav__menu-social">
+
+        <a href="https://www.facebook.com/margherita.poli.perla?locale=it_IT" target="_blank">
+          <div class="social social__facebook" data-json="{% static 'icons/facebook4.json' %}"></div>
+        </a>
+
+        <a href="https://www.instagram.com/margherita.poli.perla/" target="_blank">
+          <div class="social social__instagram" data-json="{% static 'icons/instagram.json' %}"></div>
+        </a>
+
+        <a href="https://www.superprof.it/laureata-lettere-classiche-disponibile-per-lezioni-greco-latino-online-presenza-citta-parma-sant-ilario-enza.html"
+          target="_blank">
+          <div class="social social__superprof" data-json="{% static 'icons/superprof.json' %}"></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ========== sezione artista ========== -->
+    <div class="i-artist">
+      <div class="i-artist__content">
+        <h3 class="i-artist__content-title">{% trans "L'artista" %}</h3>
+        <p class="i-artist__content-desc">
+          {% trans "Un percorso artistico che unisce ispirazione e ricerca: dipinti, poesie, illustrazioni ed esposizioni si intrecciano per raccontare frammenti dell’anima e mostrare un’evoluzione creativa in continua crescita." %}
+        </p>
+      </div>
+      <div class="i-artist__images">
+        <img class="i-artist__image image-1" src="{% static 'images/index/Illustrazione.png' %}" />
+        <img class="i-artist__image image-2" src="{% static 'images/index/Poesie.jpg' %}" />
+        <img class="i-artist__image image-3" src="{% static 'images/index/Hidden.jpg' %}" />
+      </div>
+      <div class="i-button">
+        <a class="i-button__btn" href="{% url 'margherita_poli:paintings_all' %}">{% trans "Vai alla sezione" %}</a>
+      </div>
+    </div>
+
+    <!-- ========== Sezione insegnante ========== -->
+    <div class="i-teacher">
+      <div class="i-teacher__content">
+        <h3 class="i-teacher__content-title">{% trans "L'insegnante" %}</h3>
+        <p class="i-teacher__content-desc">
+          {% trans "Uno spazio in cui l’insegnamento diventa incontro, scambio e crescita. Lezioni, esercizi e metodi che si intrecciano per accompagnare ogni allievo nel suo percorso di scoperta." %}
+        </p>
+      </div>
+      <div class="i-teacher__images">
+        <img class="i-teacher__image image-1" src="{% static 'images/index/1.png' %}" />
+        <img class="i-teacher__image image-2" src="{% static 'images/index/2.jpg' %}" />
+        <img class="i-teacher__image image-3" src="{% static 'images/index/3.png' %}" />
+      </div>
+      <div class="i-button teacher">
+        <a class="i-button__btn teacher" href="{% url 'margherita_poli:teacher' %}">{% trans "Vai alla sezione" %}</a>
+      </div>
+    </div>
+
+    <!-- ========== Sezione su di me ========== -->
+    <div class="i-about" id="aboutme">
+      <div class="i-about__top">
+        <h3 class="i-about__top-title">{% trans "Su di me" %}</h3>
+      </div>
+
+      <div class="i-about__container">
+        <div class="i-about__images">
+          <img class="i-about__image" src="{% static 'images/index/profilo.png' %}" />
+        </div>
+
+        <div class="i-about__content">
+          <p class="i-about__content-desc">
+
+            {% blocktrans trimmed %}
+            Margherita Poli è un’artista, pittrice, illustratrice, attrice-performer e insegnante.
+            Nata a Reggio Emilia il 14 giugno del 1994, ha una formazione in campo pittorico da autodidatta,
+            intervallata da un corso di pittura a olio con il pittore e architetto Stefano Ferrari.
+            {% endblocktrans %}
+
+            <br /><br />
+
+            {% blocktrans trimmed %}
+            Nel campo dell’illustrazione ha frequentato corsi professionali sotto la supervisione degli
+            illustratori Marco Somà e Michelangelo Rossato presso la scuola
+            {% endblocktrans %}
+            <i>{% trans "Ars in Fabula" %}</i>
+            {% blocktrans trimmed %}
+            di Macerata. Come attrice-performer ha lavorato per sei anni nella Compagnia Teatrale Pietribiasi-Tedeschi di Reggio Emilia.
+            {% endblocktrans %}
+
+            <br /><br />
+
+            {% blocktrans trimmed %}
+            I suoi dipinti sono stati esposti in mostre a Sant’Ilario d’Enza, Cavriago (Reggio Emilia),
+            Parma, Bologna e Borgo Val di Taro (Parma).
+            {% endblocktrans %}
+
+            <br /><br />
+
+            {% blocktrans trimmed %}
+            Dopo aver conseguito la laurea triennale in Lettere Classiche all’Università di Bologna,
+            attualmente prosegue i suoi studi letterari. Insegna privatamente, in seguito all’esperienza
+            come co-docente del Capo del Dipartimento di Letteratura Italiana presso la
+            {% endblocktrans %}
+            <i>{% trans "UWC Maastricht" %}</i>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- copyright -->
+    <div class="i-copyright">
+      <p>
+        Copyright &copy; 2025 Margherita Poli.
+        {% trans "Tutti i diritti riservati" %}
+      </p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
+</html>

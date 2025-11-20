@@ -1,0 +1,78 @@
+{% load static %}
+{% load i18n %}
+<div class="f-container">
+  <div class="f-content">
+
+    <div class="f-content__brand">
+      <h1 class="f-content__brand-title">Margherita Poli</h1>
+
+      <div class="f-content__brand-social">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/margherita.poli.perla?locale=it_IT" target="_blank">
+          <div class="social social__facebook" data-json="{% static 'icons/facebook4.json' %}"></div>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/margherita.poli.perla/" target="_blank">
+          <div class="social social__instagram" data-json="{% static 'icons/instagram.json' %}"></div>
+        </a>
+
+        <!-- SuperProf -->
+        <a
+          href="https://www.superprof.it/laureata-lettere-classiche-disponibile-per-lezioni-greco-latino-online-presenza-citta-parma-sant-ilario-enza.html"
+          target="_blank"
+        >
+          <div class="social social__superprof" data-json="{% static 'icons/superprof.json' %}"></div>
+        </a>
+      </div>
+    </div>
+
+    <hr class="f-content__hr" />
+
+    <div class="f-content__items">
+
+      <!-- MAPPA DEL SITO -->
+      <div class="f-content__item">
+        <h2 class="f-content__item-title">{% trans "Mappa del sito" %}</h2>
+
+        <a
+          class="f-content__item-link {% if current_section == 'home' %}active{% endif %}"
+          href="{% url 'margherita_poli:index' %}">Home</a>
+
+        <a
+          class="f-content__item-link {% if current_section in artist_sections %}active{% endif %}"
+          href="{% url 'margherita_poli:paintings_all' %}">{% trans "Artista" %}</a>
+
+        <a
+          class="f-content__item-link {% if current_section == 'teacher' %}active{% endif %}"
+          href="{% url 'margherita_poli:teacher' %}">{% trans "Insegnante" %}</a>
+      </div>
+
+      <!-- COLLABORATORI -->
+      <div class="f-content__item">
+        <h2 class="f-content__item-title">{% trans "Collaboratori" %}</h2>
+        <a class="f-content__item-link" href="mailto:leandra.verrilli@gmail.com">Leandra Verrilli</a>
+        <a class="f-content__item-link" href="https://t.me/DeSaantis" target="_blank">Carmelo De Santis</a>
+      </div>
+
+      <!-- SERVIZI -->
+      <div class="f-content__item">
+        <h2 class="f-content__item-title">{% trans "Servizi" %}</h2>
+
+        <a class="f-content__item-link" href="{% url 'margherita_poli:paintings_all' %}">
+          {% trans "Dipinti" %}
+        </a>
+
+        <a class="f-content__item-link" href="{% url 'margherita_poli:teacher' %}#service">
+          {% trans "Lezioni" %}
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="t-container__copyright">
+    Copyright &copy; 2025 Margherita Poli.
+    {% trans "Tutti i diritti riservati" %}
+  </p>
+</div>

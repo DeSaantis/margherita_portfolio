@@ -1,0 +1,17 @@
+# Environment variables
+.env
+
+# Byte-compiled / cache
+__pycache__/
+*.pyc
+
+# Django stuff
+db.sqlite3
+
+# Static and media (generated)
+static/
+media/
+
+# IDE stuff
+.vscode/
+.idea/

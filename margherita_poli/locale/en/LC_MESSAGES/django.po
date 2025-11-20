@@ -1,0 +1,598 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-19 23:54+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/emails/contact_teacher.html:6
+#: templates/emails/contact_teacher.html:13
+msgid "Nuovo messaggio dal sito"
+msgstr "New message from the website"
+
+#: templates/emails/contact_teacher.html:15
+msgid "Hai ricevuto un nuovo messaggio dalla pagina"
+msgstr "You have received a new message from the page"
+
+#: templates/emails/contact_teacher.html:16
+#: templates/margherita_poli/index.html:60
+#: templates/margherita_poli/partials/footer.html:48
+#: templates/margherita_poli/partials/navbar.html:26
+#: templates/margherita_poli/partials/navbar.html:106
+#: templates/margherita_poli/teacher.html:9
+msgid "Insegnante"
+msgstr "Teacher"
+
+#: templates/emails/contact_teacher.html:25
+#: templates/margherita_poli/teacher.html:269
+msgid "Nome completo"
+msgstr "Full name"
+
+#: templates/emails/contact_teacher.html:34
+#: templates/emails/order_confirmation.html:64
+#: templates/margherita_poli/teacher.html:274
+msgid "Email"
+msgstr "Email"
+
+#: templates/emails/contact_teacher.html:43
+#: templates/margherita_poli/teacher.html:279
+msgid "Messaggio"
+msgstr "Message"
+
+#: templates/emails/order_confirmation.html:6
+msgid "Conferma ordine"
+msgstr "Confirm your order"
+
+#: templates/emails/order_confirmation.html:59
+msgid "Grazie per il tuo ordine!"
+msgstr "Thank you for your order!"
+
+#: templates/emails/order_confirmation.html:62
+msgid "Ordine n°"
+msgstr "Order n°"
+
+#: templates/emails/order_confirmation.html:63
+msgid "Cliente"
+msgstr "Client"
+
+#: templates/emails/order_confirmation.html:65
+msgid "Data"
+msgstr "Date"
+
+#: templates/emails/order_confirmation.html:68
+msgid "Dettagli spedizione"
+msgstr "Shipping details"
+
+#: templates/emails/order_confirmation.html:75
+msgid "Articoli ordinati"
+msgstr "Ordered items"
+
+#: templates/emails/order_confirmation.html:101
+#: templates/margherita_poli/cart.html:50
+#: templates/margherita_poli/checkout.html:192
+msgid "Subtotale"
+msgstr "Subtotal"
+
+#: templates/emails/order_confirmation.html:110
+#: templates/margherita_poli/checkout.html:109
+msgid "Spedizione"
+msgstr "Shipping"
+
+#: templates/emails/order_confirmation.html:119
+#: templates/margherita_poli/cart.html:57
+#: templates/margherita_poli/checkout.html:210
+msgid "Totale"
+msgstr "Total"
+
+#: templates/emails/order_confirmation.html:130
+msgid "Riceverai una notifica quando il tuo ordine sarà spedito."
+msgstr "You will receive a notification when your order is shipped."
+
+#: templates/emails/order_confirmation.html:132
+msgid "Grazie per aver scelto l’arte di Margherita Poli"
+msgstr "Thank you for choosing the art of Margherita Poli"
+
+#: templates/margherita_poli/base_artist.html:6
+#: templates/margherita_poli/base_artist.html:8
+#: templates/margherita_poli/index.html:57
+#: templates/margherita_poli/partials/footer.html:44
+#: templates/margherita_poli/partials/navbar.html:20
+#: templates/margherita_poli/partials/navbar.html:100
+msgid "Artista"
+msgstr "Artist"
+
+#: templates/margherita_poli/base_artist.html:12
+#: templates/margherita_poli/paintings.html:6
+#: templates/margherita_poli/partials/footer.html:63
+msgid "Dipinti"
+msgstr "Paintings"
+
+#: templates/margherita_poli/base_artist.html:16
+#: templates/margherita_poli/poems.html:6
+msgid "Poesie"
+msgstr "Poems"
+
+#: templates/margherita_poli/base_artist.html:20
+#: templates/margherita_poli/illustrator.html:6
+msgid "Illustrazioni"
+msgstr "Illustrations"
+
+#: templates/margherita_poli/base_artist.html:24
+#: templates/margherita_poli/exhibitions.html:10
+msgid "Esposizioni"
+msgstr "Exhibitions"
+
+#: templates/margherita_poli/cart.html:7
+#: templates/margherita_poli/paintings.html:16
+msgid "Carrello"
+msgstr "Cart"
+
+#: templates/margherita_poli/cart.html:14
+#: templates/margherita_poli/checkout.html:21
+msgid "Ritorna ai dipinti"
+msgstr "Return to paintings"
+
+#: templates/margherita_poli/cart.html:17
+msgid "Il mio carrello"
+msgstr "My cart"
+
+#: templates/margherita_poli/cart.html:36
+msgid "Rimuovi dal carrello"
+msgstr "Remove from cart"
+
+#: templates/margherita_poli/cart.html:40
+msgid "Carrello vuoto."
+msgstr "Empty cart."
+
+#: templates/margherita_poli/cart.html:46
+msgid "Riepilogo ordine"
+msgstr "Order summary"
+
+#: templates/margherita_poli/cart.html:63
+msgid "Vai al checkout"
+msgstr "Go to checkout"
+
+#: templates/margherita_poli/checkout.html:9
+#: templates/margherita_poli/checkout.html:23
+msgid "Checkout"
+msgstr "Checkout"
+
+#: templates/margherita_poli/checkout.html:30
+msgid "Dettagli cliente"
+msgstr "Client details"
+
+#: templates/margherita_poli/checkout.html:39
+msgid "Informazioni personali"
+msgstr "Personal information"
+
+#: templates/margherita_poli/checkout.html:42
+msgid "Email *"
+msgstr "Email *"
+
+#: templates/margherita_poli/checkout.html:49
+msgid "Nome *"
+msgstr "Name *"
+
+#: templates/margherita_poli/checkout.html:54
+msgid "Cognome *"
+msgstr "Surname *"
+
+#: templates/margherita_poli/checkout.html:60
+msgid "Informazioni di consegna"
+msgstr "Shipping information"
+
+#: templates/margherita_poli/checkout.html:63
+msgid "Paese/Regione *"
+msgstr "Country/Region *"
+
+#: templates/margherita_poli/checkout.html:68
+msgid "Indirizzo *"
+msgstr "Address *"
+
+#: templates/margherita_poli/checkout.html:73
+msgid "Città *"
+msgstr "City *"
+
+#: templates/margherita_poli/checkout.html:79
+msgid "Regione *"
+msgstr "Region *"
+
+#: templates/margherita_poli/checkout.html:85
+msgid "CAP *"
+msgstr "Zip Code *"
+
+#: templates/margherita_poli/checkout.html:90
+#: templates/margherita_poli/checkout.html:115
+msgid "Continua"
+msgstr "Continue"
+
+#: templates/margherita_poli/checkout.html:104
+msgid "Metodo di consegna *"
+msgstr "Shipping method *"
+
+#: templates/margherita_poli/checkout.html:128
+msgid "Metodo di pagamento"
+msgstr "Payment method"
+
+#: templates/margherita_poli/checkout.html:131
+msgid "Titolare Carta *"
+msgstr "Cardholder name *"
+
+#: templates/margherita_poli/checkout.html:136
+msgid "Numero Carta *"
+msgstr "Card number *"
+
+#: templates/margherita_poli/checkout.html:141
+msgid "Scadenza *"
+msgstr "Expiration date *"
+
+#: templates/margherita_poli/checkout.html:144
+msgid "CVC *"
+msgstr "CVC *"
+
+#: templates/margherita_poli/checkout.html:153
+msgid "Ordina e paga"
+msgstr "Order and pay"
+
+#: templates/margherita_poli/checkout.html:165
+msgid "Riepilogo dell'ordine"
+msgstr "Order summary"
+
+#: templates/margherita_poli/checkout.html:197
+msgid "Consegna"
+msgstr "Delivery"
+
+#: templates/margherita_poli/checkout.html:228
+#: templates/margherita_poli/index.html:176
+#: templates/margherita_poli/partials/footer.html:76
+msgid "Tutti i diritti riservati"
+msgstr "All rights reserved"
+
+#: templates/margherita_poli/exhibitions.html:20
+msgid "Evento in corso"
+msgstr "Event in progress"
+
+#: templates/margherita_poli/exhibitions.html:22
+msgid "In collaborazione con"
+msgstr "In collaboration with"
+
+#: templates/margherita_poli/exhibitions.html:55
+msgid "Altre esposizioni"
+msgstr "Other exhibitions"
+
+#: templates/margherita_poli/index.html:23
+#: templates/margherita_poli/index.html:52
+#: templates/margherita_poli/partials/navbar.html:83
+#: templates/margherita_poli/partials/navbar.html:89
+msgid "Menu"
+msgstr "Menu"
+
+#: templates/margherita_poli/index.html:88
+msgid "L'artista"
+msgstr "The artist"
+
+#: templates/margherita_poli/index.html:90
+msgid ""
+"Un percorso artistico che unisce ispirazione e ricerca: dipinti, poesie, "
+"illustrazioni ed esposizioni si intrecciano per raccontare frammenti "
+"dell’anima e mostrare un’evoluzione creativa in continua crescita."
+msgstr ""
+"An artistic journey that unites inspiration and research: paintings, poems, "
+"illustrations and exhibitions interwine to reveal fragments of the soul and "
+"show a creative evolution in continuous growth."
+
+#: templates/margherita_poli/index.html:99
+#: templates/margherita_poli/index.html:117
+msgid "Vai alla sezione"
+msgstr "Go to the section"
+
+#: templates/margherita_poli/index.html:106
+msgid "L'insegnante"
+msgstr "The teacher"
+
+#: templates/margherita_poli/index.html:108
+msgid ""
+"Uno spazio in cui l’insegnamento diventa incontro, scambio e crescita. "
+"Lezioni, esercizi e metodi che si intrecciano per accompagnare ogni allievo "
+"nel suo percorso di scoperta."
+msgstr ""
+"A space where teaching turns into connection, dialogue and growth. Lessons, "
+"exercises and methods combine to accompany each learner in their path of "
+"discovery."
+
+#: templates/margherita_poli/index.html:124
+#: templates/margherita_poli/partials/navbar.html:32
+#: templates/margherita_poli/partials/navbar.html:112
+msgid "Su di me"
+msgstr "About me"
+
+#: templates/margherita_poli/index.html:135
+msgid ""
+"Margherita Poli è un’artista, pittrice, illustratrice, attrice-performer e "
+"insegnante. Nata a Reggio Emilia il 14 giugno del 1994, ha una formazione in "
+"campo pittorico da autodidatta, intervallata da un corso di pittura a olio "
+"con il pittore e architetto Stefano Ferrari."
+msgstr ""
+"Margherita Poli is an artist, illustrator, actress-performer, and "
+"teacher. Born in Reggio Emilia on June 14, 1994, she trained as a self-taught "
+"painter, complementing her practice with an oil painting course led by the "
+"painter and architect Stefano Ferrari."
+
+#: templates/margherita_poli/index.html:143
+msgid ""
+"Nel campo dell’illustrazione ha frequentato corsi professionali sotto la "
+"supervisione degli illustratori Marco Somà e Michelangelo Rossato presso la "
+"scuola"
+msgstr ""
+"In the field of illustration, she attended professional courses under the "
+"supervision of illustrators Marco Somà and Michelangelo Rossato at the "
+"school"
+
+#: templates/margherita_poli/index.html:147
+msgid "Ars in Fabula"
+msgstr "Ars in Fabula"
+
+#: templates/margherita_poli/index.html:148
+msgid ""
+"di Macerata. Come attrice-performer ha lavorato per sei anni nella Compagnia "
+"Teatrale Pietribiasi-Tedeschi di Reggio Emilia."
+msgstr ""
+"in Macerata. As an actress-performer, she worked for six years with the "
+"Pietribiasi-Tedeschi Theatre Company in Reggio Emilia."
+
+#: templates/margherita_poli/index.html:154
+msgid ""
+"I suoi dipinti sono stati esposti in mostre a Sant’Ilario d’Enza, Cavriago "
+"(Reggio Emilia), Parma, Bologna e Borgo Val di Taro (Parma)."
+msgstr ""
+"Her paintings have been exhibited in Sant'Ilario d'Enza, Cavriago (Reggio "
+"Emilia), Parma, Bologna e Borgo Val di Taro (Parma)."
+
+#: templates/margherita_poli/index.html:161
+msgid ""
+"Dopo aver conseguito la laurea triennale in Lettere Classiche all’Università "
+"di Bologna, attualmente prosegue i suoi studi letterari. Insegna "
+"privatamente, in seguito all’esperienza come co-docente del Capo del "
+"Dipartimento di Letteratura Italiana presso la"
+msgstr ""
+"After earning a bachelor's degree in Classical Literature from the "
+"University of Bologna, she is currently continuing her literary studies. She "
+"also teaches privately, following her experience as co-instructor with the "
+"Head of Department of Italian Literature at"
+
+#: templates/margherita_poli/index.html:166
+msgid "UWC Maastricht"
+msgstr "UWC Maastricht"
+
+#: templates/margherita_poli/paintings.html:14
+msgid "Serie"
+msgstr "Series"
+
+#: templates/margherita_poli/paintings.html:15
+msgid "Tutti"
+msgstr "All"
+
+#: templates/margherita_poli/paintings.html:86
+msgid "Acquista"
+msgstr "Buy"
+
+#: templates/margherita_poli/partials/footer.html:36
+msgid "Mappa del sito"
+msgstr "Site map"
+
+#: templates/margherita_poli/partials/footer.html:53
+msgid "Collaboratori"
+msgstr "Collaborators"
+
+#: templates/margherita_poli/partials/footer.html:60
+msgid "Servizi"
+msgstr "Services"
+
+#: templates/margherita_poli/partials/footer.html:67
+msgid "Lezioni"
+msgstr "Lessons"
+
+#: templates/margherita_poli/poems.html:15
+msgid "Poesia del giorno"
+msgstr "Poem of the day"
+
+#: templates/margherita_poli/teacher.html:19
+msgid "Insegnante Privata"
+msgstr "Private Teacher"
+
+#: templates/margherita_poli/teacher.html:21
+msgid ""
+"Mi chiamo Margherita, sono laureata in Lettere e da diversi anni mi dedico "
+"all’insegnamento in molteplici forme e contesti."
+msgstr ""
+"My name is Margherita, I have a degree in Humanities, and for several years "
+"I have been dedicated to teaching in various forms and contexts."
+
+#: templates/margherita_poli/teacher.html:25
+msgid ""
+"La mia esperienza spazia dalla scuola primaria, alla secondaria di primo "
+"grado, alla secondaria di secondo grado, fino all’università, sia in Italia "
+"che all’estero, e copre sia materie scolastiche che attività artistiche. "
+"Accompagno gli studenti in percorsi personalizzati, supportandoli nello "
+"studio quotidiano durante tutto l’anno, nella preparazione di verifiche, "
+"interrogazioni ed esami."
+msgstr ""
+"My experience ranges from primary and secondary school to university, both in "
+"Italy and abroad, and includes both academic subjects as well as artistic "
+"activities. I guide students through personalized learning paths, supporting "
+"them with daily study throughout the year, and in preparing for tests, oral "
+"exams, and other assessments."
+
+#: templates/margherita_poli/teacher.html:32
+msgid ""
+"Il mio approccio è flessibile e personalizzato: definisco il percorso più "
+"adatto alle necessità e agli obiettivi dello studente."
+msgstr ""
+"My approach is flexible and student-centered: I design the most "
+"suitable path based on each student's needs and goals."
+
+#: templates/margherita_poli/teacher.html:38
+#: templates/margherita_poli/teacher.html:261
+msgid "Contattami"
+msgstr "Contact me"
+
+#: templates/margherita_poli/teacher.html:54
+msgid "I miei servizi"
+msgstr "My services"
+
+#: templates/margherita_poli/teacher.html:61
+msgid "Affiancamento scolastico durante l'intero anno:"
+msgstr "Academic support throughout the school year:"
+
+#: templates/margherita_poli/teacher.html:63
+msgid "elementari, medie e superiori."
+msgstr "elementary, middle and high school."
+
+#: templates/margherita_poli/teacher.html:68
+#: templates/margherita_poli/teacher.html:79
+msgid "Informazioni"
+msgstr "Information"
+
+#: templates/margherita_poli/teacher.html:75
+msgid "Affiancamento universitario"
+msgstr "University support"
+
+#: templates/margherita_poli/teacher.html:93
+msgid "Elementari"
+msgstr "Elementary"
+
+#: templates/margherita_poli/teacher.html:93
+#: templates/margherita_poli/teacher.html:94
+msgid "Tutte le materie"
+msgstr "All subjects"
+
+#: templates/margherita_poli/teacher.html:94
+msgid "Medie"
+msgstr "Middle school"
+
+#: templates/margherita_poli/teacher.html:95
+msgid "Superiori"
+msgstr "High school"
+
+#: templates/margherita_poli/teacher.html:95
+msgid "Greco/Latino/Inglese/Italiano"
+msgstr "Greek/Latin/English/Italian"
+
+#: templates/margherita_poli/teacher.html:97
+#: templates/margherita_poli/teacher.html:121
+#: templates/margherita_poli/teacher.html:141
+#: templates/margherita_poli/teacher.html:157
+#: templates/margherita_poli/teacher.html:173
+#: templates/margherita_poli/teacher.html:189
+msgid "50 minuti"
+msgstr "50 minutes"
+
+#: templates/margherita_poli/teacher.html:98
+#: templates/margherita_poli/teacher.html:142
+#: templates/margherita_poli/teacher.html:158
+#: templates/margherita_poli/teacher.html:174
+#: templates/margherita_poli/teacher.html:190
+msgid "25 euro"
+msgstr "25 euros"
+
+#: templates/margherita_poli/teacher.html:102
+#: templates/margherita_poli/teacher.html:126
+#: templates/margherita_poli/teacher.html:146
+#: templates/margherita_poli/teacher.html:162
+#: templates/margherita_poli/teacher.html:178
+#: templates/margherita_poli/teacher.html:194
+msgid "Prenota ora"
+msgstr "Book now"
+
+#: templates/margherita_poli/teacher.html:115
+msgid ""
+"Assistenza nella preparazione di esami d'ingresso in ambito umanistico e "
+"affiancamento nella preparazione di esami umanistici."
+msgstr ""
+"Support in preparing for entrance exams in the humanities and "
+"guidance for humanities exams"
+
+#: templates/margherita_poli/teacher.html:122
+msgid "30 euro"
+msgstr "30 euros"
+
+#: templates/margherita_poli/teacher.html:132
+msgid "Specializzata in ..."
+msgstr "Specialized in ..."
+
+#: templates/margherita_poli/teacher.html:140
+msgid "greco"
+msgstr "greek"
+
+#: templates/margherita_poli/teacher.html:156
+msgid "latino"
+msgstr "latin"
+
+#: templates/margherita_poli/teacher.html:172
+msgid "inglese"
+msgstr "english"
+
+#: templates/margherita_poli/teacher.html:188
+msgid "italiano"
+msgstr "italian"
+
+#: templates/margherita_poli/teacher.html:212
+msgid "Galleria"
+msgstr "Gallery"
+
+#: templates/margherita_poli/teacher.html:214
+msgid "Tra lavagne, appunti e sorrisi: un racconto visivo del mio percorso."
+msgstr "Among blackboards, notes, and smiles: a visual account of my journey."
+
+#: templates/margherita_poli/teacher.html:262
+msgid "Lasciami un messaggio, ti risponderò appena possibile."
+msgstr "Please leave me a message, and I will respond as soon as possible."
+
+#: templates/margherita_poli/teacher.html:266
+msgid "Manda un messaggio a Margherita"
+msgstr "Send a message to Margherita"
+
+#: templates/margherita_poli/teacher.html:284
+msgid ""
+"Scrivimi il tipo di supporto che stai cercando (lezioni private, "
+"affiancamento annuale, universitario, ecc.)"
+msgstr ""
+"Write me the type of support you are looking for (private lessons, "
+"year-long guidance, university support, etc.)"
+
+#: templates/margherita_poli/teacher.html:289
+msgid "Invia Messaggio"
+msgstr "Send message"
+
+#: templates/margherita_poli/teacher.html:297
+msgid "Messaggio inviato con successo ✅"
+msgstr "Message sent successfully ✅"
+
+#: templates/margherita_poli/teacher.html:298
+msgid "Ti risponderò il prima possibile!"
+msgstr "I will reply as soon as possible!"
+
+#: templates/margherita_poli/teacher.html:299
+#: templates/margherita_poli/teacher.html:307
+msgid "Chiudi"
+msgstr "Close"
+
+#: templates/margherita_poli/teacher.html:305
+msgid "Errore"
+msgstr "Error"
+
+#: templates/margherita_poli/teacher.html:306
+msgid "Si è verificato un problema. Riprova più tardi."
+msgstr "An error occurred. Please try again later."

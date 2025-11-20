@@ -1,0 +1,52 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% trans "Nuovo messaggio dal sito" %}</title>
+</head>
+<body style="font-family:Arial, sans-serif; background:#f7f7f7; padding:20px;">
+    
+    <table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px; margin:auto; background:white; padding:20px; border-radius:8px;">
+        <tr>
+            <td style="text-align:center;">
+                <h2 style="color:#333;">📩 {% trans "Nuovo messaggio dal sito" %}</h2>
+                <p style="color:#555;">
+                    {% trans "Hai ricevuto un nuovo messaggio dalla pagina" %}
+                    <strong>{% trans "Insegnante" %}</strong>.
+                </p>
+            </td>
+        </tr>
+
+        <tr><td style="height:15px"></td></tr>
+
+        <tr>
+            <td>
+                <strong>👤 {% trans "Nome completo" %}:</strong><br>
+                <span style="color:#444;">{{ fullname }}</span>
+            </td>
+        </tr>
+
+        <tr><td style="height:15px"></td></tr>
+
+        <tr>
+            <td>
+                <strong>📧 {% trans "Email" %}:</strong><br>
+                <span style="color:#444;">{{ email }}</span>
+            </td>
+        </tr>
+
+        <tr><td style="height:15px"></td></tr>
+
+        <tr>
+            <td>
+                <strong>💬 {% trans "Messaggio" %}:</strong><br>
+                <div style="background:#f0f0f0; padding:15px; border-radius:6px; margin-top:5px;">
+                    {{ messaggio }}
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

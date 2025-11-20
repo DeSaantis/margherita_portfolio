@@ -1,0 +1,117 @@
+{% load static %}
+{% load i18n %}
+
+<!-- ---------- BARRA DI NAVIGAZIONE OLTRE I 900px ---------- -->
+<div class="nav lg">
+  <div class="brand">
+    <a href="{% url 'margherita_poli:index' %}">Margherita Poli</a>
+  </div>
+
+  <div class="menu">
+    <a
+      class="{% if current_section == 'home' %}active{% else %}disable{% endif %}"
+      href="{% url 'margherita_poli:index' %}">
+      {% trans "Home" %}
+    </a>
+
+    <a
+      class="{% if current_section in artist_sections %}active{% else %}disable{% endif %}"
+      href="{% url 'margherita_poli:paintings_all' %}">
+      {% trans "Artista" %}
+    </a>
+
+    <a
+      class="{% if current_section == 'teacher' %}active{% else %}disable{% endif %}"
+      href="{% url 'margherita_poli:teacher' %}">
+      {% trans "Insegnante" %}
+    </a>
+
+    <a
+      class="{% if current_section == 'aboutme' %}active{% else %}disable{% endif %}"
+      href="{% url 'margherita_poli:index' %}#aboutme">
+      {% trans "Su di me" %}
+    </a>
+  </div>
+
+  <div class="trans">
+    <form action="{% url 'set_language' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ redirect_to }}" />
+
+      {% get_current_language as LANGUAGE_CODE %}
+      {% if LANGUAGE_CODE == 'it' %}
+        <input type="hidden" name="language" value="en" />
+      {% else %}
+        <input type="hidden" name="language" value="it" />
+      {% endif %}
+
+      <button type="submit" class="btnTrans">
+        <div class="globe" data-json="{% static 'icons/globe-white.json' %}"></div>
+        <span>{% if LANGUAGE_CODE == 'it' %} IT {% else %} EN {% endif %}</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ---------- BARRA DI NAVIGAZIONE SOTTO I 900px ---------- -->
+<div class="nav sl">
+  <div class="brand">
+    <a href="{% url 'margherita_poli:index' %}">Margherita Poli</a>
+  </div>
+
+  <div class="menu">
+
+    <div class="trans">
+      <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ redirect_to }}" />
+
+        {% get_current_language as LANGUAGE_CODE %}
+        {% if LANGUAGE_CODE == 'it' %}
+          <input type="hidden" name="language" value="en" />
+        {% else %}
+          <input type="hidden" name="language" value="it" />
+        {% endif %}
+
+        <button type="submit" class="btnTrans">
+          <div class="globe" data-json="{% static 'icons/globe-white.json' %}"></div>
+          <span>{% if LANGUAGE_CODE == 'it' %} IT {% else %} EN {% endif %}</span>
+        </button>
+      </form>
+    </div>
+
+    <button class="btnMenu">☰ {% trans "Menu" %}</button>
+
+    <div class="overlay"></div>
+
+    <div class="offcanvas">
+      <button class="btnClose">&times;</button>
+      <h2>{% trans "Menu" %}</h2>
+
+      <a
+        class="{% if current_section == 'home' %}active{% else %}disable{% endif %}"
+        href="{% url 'margherita_poli:index' %}">
+        Home
+      </a>
+
+      <a
+        class="{% if current_section in artist_sections %}active{% else %}disable{% endif %}"
+        href="{% url 'margherita_poli:paintings_all' %}">
+        {% trans "Artista" %}
+      </a>
+
+      <a
+        class="{% if current_section == 'teacher' %}active{% else %}disable{% endif %}"
+        href="{% url 'margherita_poli:teacher' %}">
+        {% trans "Insegnante" %}
+      </a>
+
+      <a
+        class="{% if current_section == 'aboutme' %}active{% else %}disable{% endif %}"
+        href="{% url 'margherita_poli:index' %}#aboutme">
+        {% trans "Su di me" %}
+      </a>
+    </div>
+
+  </div>
+</div>

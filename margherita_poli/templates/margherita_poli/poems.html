@@ -1,0 +1,58 @@
+{% extends "margherita_poli/base_artist.html" %} 
+{% load static %} 
+{% load i18n %}
+{% block extra_css %} {{ block.super }}
+<link href="{% static 'css/poems.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %} {% block title %}Margherita Poli | {% trans "Poesie" %}{% endblock %}
+
+<!-- ========== CLASSE DIVERSA DA BASE.HTML ========== -->
+{% block body_class %}body-poems{% endblock%}
+
+<!-- ============= Poesia caricate da database ============== -->
+{% block artist_content %}
+<div class="p-daily">
+  <div class="p-daily__content">
+    <h2 class="p-daily__content-title">{% trans "Poesia del giorno" %}</h2>
+  </div>
+
+  {% if poem_of_the_day %}
+  <div class="p-daily__images">
+    <img
+      loading="lazy"
+      class="p-content__openModal"
+      src="{{ poem_of_the_day.thumb.url }}"
+      data-src="{{ poem_of_the_day.image.url }}"
+      alt="Poesia del giorno"
+    />
+  </div>
+  {% endif %}
+</div>
+
+<div class="p-content">
+  <!-- ciclo for -->
+  {% for poem in poems %}
+  <div class="p-content__img">
+    <img
+      loading="lazy"
+      class="p-content__openModal"
+      src="{{ poem.thumb.url }}"
+      alt=""
+      data-src="{{ poem.image.url }}"
+    />
+  </div>
+
+  {% endfor %}
+  <!-- fine ciclo for -->
+</div>
+<div class="p-overlay"></div>
+<div class="p-modal">
+  <div class="p-modal__content">
+    <img class="p-modal__content-img" src="" alt="" />
+  </div>
+</div>
+{% endblock artist_content %}
+
+<!-- js -->
+{% block extra_js %} {{ block.super }}
+<script src="{% static 'js/poems.js' %}"></script>
+{% endblock %}

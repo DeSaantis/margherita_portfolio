@@ -1,0 +1,78 @@
+{% extends "margherita_poli/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block extra_css %}
+<link href="{% static 'css/cart.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %} 
+{% block title %}Margherita Poli | {% trans "Carrello" %}{% endblock %}
+
+<!-- ============= Classe body diversa da base.html ============== -->
+{% block body_class %}body-prova{% endblock%}
+
+{% block content%}
+<main class="c-main">
+  <p class="c-main__back"><a href="{% url 'margherita_poli:paintings_all' %}">{% trans "Ritorna ai dipinti" %}</a></p>
+<div class="c-cart">
+  <div class="c-content">
+    <h1 class="c-content__title">{% trans "Il mio carrello" %}</h1>
+
+    {% if items %}
+        {% for item in items %}
+        <div class="c-content__items">
+          <div class="c-content__item-img">
+            <img src="{{ item.image }}" alt="" />
+          </div>
+
+          <div class="c-content__item-desc">
+            {{ item.details|safe }}
+          </div>
+
+          <div class="c-content__item-price">
+            {{ item.price }} €
+          </div>
+        </div>
+
+        <div class="c-content__trash">
+          <a href="{% url 'margherita_poli:remove_from_cart' item.id %}">{% trans "Rimuovi dal carrello" %}</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="c-empty">{% trans "Carrello vuoto." %}</p>
+    {% endif %}
+
+  </div>
+
+  <div class="c-recap">
+    <h1 class="c-recap__title">{% trans "Riepilogo ordine" %}</h1>
+    <div class="c-recap__items">
+
+      <div class="c-recap__item-subtotal">
+        <p>{% trans "Subtotale" %}</p>
+        <span>{{ subtotal }} €</span>
+      </div>
+
+      <hr />
+
+      <div class="c-recap__item-total">
+        <p>{% trans "Totale" %}</p>
+        <span>{{ total }} €</span>
+      </div>
+
+      <div class="c-continue">
+        <a href="{% url 'margherita_poli:checkout_cart' %}" class="c-checkout-btn">
+            {% trans "Vai al checkout" %}</a> 
+      </div>
+
+    </div>
+  </div>
+</div>
+</main>
+
+
+
+{% endblock content%} 
+
+{% block extra_js %}
+<script src="{% static 'js/cart.js' %}"></script>
+</script>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "margherita_poli/base_artist.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_css %}
+{{ block.super }}
+<link href="{% static 'css/exhibitions.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block title %}Margherita Poli | {% trans "Esposizioni" %}{% endblock %}
+
+<!-- ========== CLASSE DIVERSa DA BASE.HTML ========== -->
+{% block body_class %}body-exhibitions{% endblock %}
+
+{% block artist_content %}
+
+<!-- ========== Mostra l'esposizione in corso ========== -->
+<div class="e-progress">
+  <div class="e-progress__event">
+    <h2 class="e-progress__event-title">{% trans "Evento in corso" %}</h2>
+    <p class="e-progress__event-desc">
+        {% trans "In collaborazione con" %}
+      <a href="https://www.bowling2000.it/" target="_blank">Bowling 2000</a>
+    </p>
+  </div>
+  <div class="e-progress__style"></div>
+</div>
+
+<!-- ============ Descrizione esposizione ========== -->
+<div class="e-event">
+  <div class="e-event__content">
+    <h2 class="e-event__content-title">{{ current_exhibition.localized_section|safe }}</h2>
+    <p class="e-event__content-desc">{{ current_exhibition.localized_description|safe }}</p>
+  </div>
+</div>
+
+<!-- ============ immagini esposizione ========== -->
+<div class="e-gallery">
+  <div class="e-gallery__content">
+    <div class="e-gallery__content-images">
+      {% for photo in current_exhibition.exhibition_set.all %}
+        <img class="e-gallery__content-modal"
+             id="carousel-{{ photo.id }}"
+             src="{{ photo.thumb.url }}"
+             data-src="{{ photo.image.url }}"
+             alt="">
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- ========== Mostra altre esposizioni ========== -->
+<div class="e-progress">
+  <div class="e-progress__event">
+    <h2 class="e-progress__event-title">{% trans "Altre esposizioni" %}</h2>
+  </div>
+  <div class="e-progress__style"></div>
+</div>
+
+{% for section in past_exhibitions %}
+  
+  <div class="e-event">
+    <div class="e-event__content">
+      <h2 class="e-event__content-title">{{ section.localized_section|safe }}</h2>
+      <p class="e-event__content-desc">{{ section.localized_description|safe }}</p>
+    </div>
+  </div>
+
+  <div class="e-gallery {% if forloop.last %}e-gallery--last{% endif %}">
+    <div class="e-gallery__content">
+
+      <div class="e-gallery__content-images">
+        {% for photo in section.exhibition_set.all %}
+          <img class="e-gallery__content-modal"
+               id="carousel-{{ photo.id }}"
+               src="{{ photo.thumb.url }}"
+               data-src="{{ photo.image.url }}"
+               alt="">
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+{% endfor %}
+
+<!-- =========== openModal ============ -->
+<div class="e-overlay"></div>
+<div class="e-modal">
+  <div class="e-modal__content">
+    <img class="e-modal__content-img" src="" alt="" />
+  </div>
+</div>
+
+{% endblock artist_content %}
+
+{% block extra_js %}
+{{ block.super }}
+<script src="{% static 'js/exhibitions.js' %}"></script>
+{% endblock %}

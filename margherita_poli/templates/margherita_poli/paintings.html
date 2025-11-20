@@ -1,0 +1,103 @@
+{% extends "margherita_poli/base_artist.html" %} 
+{% load static %} 
+{% load i18n %}
+{% block extra_css %} {{ block.super }}
+<link href="{% static 'css/paintings.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %} {% block title %}Margherita Poli | {% trans "Dipinti" %}{% endblock %}
+
+<!-- ========== CLASSE DIVERSA DA BASE.HTML ========== -->
+{% block body_class %}body-paintings{% endblock%}
+
+<!-- ========== MAIN ========== -->
+{% block artist_content %}
+<div class="p-filter">
+  <a class="p-filter__item active" data-filter="series">{% trans "Serie" %}</a> ·
+  <a class="p-filter__item all" data-filter="all">{% trans "Tutti" %}</a>
+</div>
+
+<!-- carrello -->
+<a href="{% url 'margherita_poli:cart' %}" 
+  class="p-filter__item cart" 
+  data-filter="cart">
+  <span id="cart-count">{% if cart_count > 0 %}{{ cart_count }}{% endif %}</span>
+</a>
+
+<div class="p-section">
+  {% for section in sections %}
+  <h2 class="p-section__title" data-section="{{ section.localized_section }}">{{ section.localized_section|safe }}</h2>
+  <p class="p-section__desc">{{ section.localized_description|safe }}</p>
+  <div class="p-section__images">
+    {% for painting in section.painting_set.all %}
+    <div class="p-section__image">
+      <div class="p-section__image-glass">
+        <p class="p-section__image-glass--p">{{ painting.localized_title|safe }}</p>
+      </div>
+      <img
+        loading="lazy"
+        class="p-section__image-openModal"
+        data-title="{{ painting.localized_title|safe }}"
+        data-description="{{ painting.localized_description|safe }}"
+        data-src="{{ painting.image.url }}"
+        data-details="{{ painting.localized_details|safe }}"
+        data-price="{{ painting.display_price }}"
+        data-status="{{ painting.status }}"
+        data-id="{{ painting.id }}"
+        src="{{ painting.thumb.url }}"
+        alt="{{ painting.get_title }}"
+      />
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+<!-- VISTA TUTTI (inizialmente nascosta) -->
+<div class="p-section p-section--all" style="display: none">
+  <div class="p-content__images">
+    {% for painting in all_paintings %}
+    <div class="p-section__image">
+      <div class="p-section__image-glass">
+        <p class="p-section__image-glass--p">{{ painting.localized_title|safe }}</p>
+      </div>
+
+      <img
+        loading="lazy"
+        class="p-section__image-openModal"
+        data-title="{{ painting.localized_title|safe }}"
+        data-description="{{ painting.localized_description|safe }}"
+        data-src="{{ painting.image.url }}"
+        data-details="{{ painting.localized_details|safe }}"
+        data-status="{{ painting.status }}"
+        data-price="{{ painting.display_price }}"
+        data-id="{{ painting.id }}"
+        src="{{ painting.thumb.url }}"
+        alt="{{ painting.localized_title }}"
+      />
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Overlay + Modale -->
+<div class="p-modal">
+  <span class="p-modal__close">&times;</span>
+  <div class="p-modal__image">
+    <img loading="lazy" src="" alt="" />
+  </div>
+  <div class="p-modal__content">
+    <h1 class="p-modal__content-title"></h1>
+    <p class="p-modal__content-desc"></p>
+    <p class="p-modal__content-details"></p>
+    <hr class="p-modal__content-hr" />
+    <span class="p-modal__content-price"></span>
+    <button class="p-modal__content-cart" data-id="" style="display: none">{% trans "Acquista" %}</button>
+  </div>
+</div>
+
+<div class="p-button__top">
+  <button id="arrow" data-json="{% static 'icons/arrow.json' %}"></button>
+</div>
+
+{% endblock artist_content %} {% block extra_js %} {{ block.super }}
+<script src="{% static 'js/paintings.js' %}"></script>
+{% endblock %}
