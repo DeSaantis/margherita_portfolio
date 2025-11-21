@@ -13,6 +13,7 @@
 .p-filter__item {
   margin-inline: 25px;
   color: var(--color-primary);
+  font-family: var(--font-primary);
   opacity: 0.6;
   transition: opacity 0.3s ease;
   cursor: pointer;
@@ -24,20 +25,22 @@
   opacity: 1;
   font-weight: 550;
 }
-.p-filter__item.cart {
+.p-cart {
   position: fixed;
   display: flex;
   justify-content: center;
+  align-items: center;
   text-decoration: none;
   top: 100px;
-  right: 0;
-  width: 35px;
-  height: 35px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
   opacity: 1;
   text-transform: uppercase;
   padding-top: 13px;
+  color: var(--color-primary);
 }
-.p-filter__item.cart:before {
+.p-cart:before {
   content: "";
   position: absolute;
   inset: 0;
@@ -54,6 +57,7 @@
   padding-inline: 10%;
   padding-bottom: 80px;
   text-align: center;
+  font-family: var(--font-primary);
 }
 .p-section__title {
   font-size: clamp(1.5rem, 7cqw, 2rem);
@@ -218,6 +222,7 @@
   z-index: 11;
   border-radius: 10px;
   color: var(--color-primary);
+  font-family: var(--font-primary);
 }
 
 .p-modal__close {

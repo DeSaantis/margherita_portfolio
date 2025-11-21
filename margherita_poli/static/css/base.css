@@ -7,18 +7,6 @@
   --font-primary: "EBGaramond";
   --font-secondary: "Lato";
 }
-
-@font-face {
-  font-family: "EBGaramond";
-  src: url("/static/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
-  font-style: normal;
-}
-@font-face {
-  font-family: "Lato";
-  src: url("/static/fonts/Lato-Regular.ttf") format("truetype");
-  font-style: normal;
-}
-
 *,
 *::before,
 *::after {

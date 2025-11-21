@@ -162,6 +162,7 @@
   font-weight: 500;
   letter-spacing: 0.7px;
   white-space: nowrap;
+  font-family: var(--font-primary);
 }
 .p-daily__images {
   position: relative;

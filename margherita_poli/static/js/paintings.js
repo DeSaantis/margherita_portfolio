@@ -32,6 +32,7 @@ function initOpenImage() {
   const overlay = document.querySelector(".p-overlay");
   const modal = document.querySelector(".p-modal");
 
+  const divImage = document.querySelector(".p-modal__image");
   const modalImage = document.querySelector(".p-modal__image img");
   const modalTitle = document.querySelector(".p-modal__content-title");
   const modalDesc = document.querySelector(".p-modal__content-desc");
@@ -108,6 +109,7 @@ function initOpenImage() {
   }
 
   overlay.addEventListener("click", closeModal);
+  divImage.addEventListener("click", closeModal);
   modalClose.addEventListener("click", closeModal);
 
   document.addEventListener("keydown", (e) => {

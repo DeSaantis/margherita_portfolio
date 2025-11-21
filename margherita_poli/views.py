@@ -19,7 +19,7 @@ from .models import Painting, SectionPainting, Illustration, Poem, SectionExhibi
 
 
 
-artist_sections = ['paintings', 'poems', 'illustrator', 'exhibitions']
+artist_sections = ['paintings', 'poems', 'illustration', 'exhibition']
 
 
 def index(request):

@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   padding-inline: 20px;
+  font-family: var(--font-primary);
 }
 .f-content__brand {
   flex: 1;
@@ -66,8 +67,10 @@
 .t-container__copyright {
   margin-top: 30px;
   color: var(--color-secondary);
+  font-weight: 400;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-family: var(--font-primary);
   text-align: center;
-  font-size: 1rem;
 }
 .f-content__item-link.active {
   border-bottom: 1px solid var(--color-secondary);

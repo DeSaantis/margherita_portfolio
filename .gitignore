@@ -1,28 +1,32 @@
-# Environment variables
+# ---- Sistema operativo ----
+.DS_Store
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ---- Virtualenv ----
+ll_env/
+venv/
+
+# ---- Variabili ambiente ----
 .env
 
-# Cache files
-CACHE/
-__pycache__/
-
-# OS files
-.DS_Store
-*/.DS_Store
-
-# Media and uploaded files (non vanno su git)
+# ---- Django ----
+db.sqlite3
 media/
-margherita_poli/files/
-*.jpg
-*.jpeg
-*.png
-*.jfif
+staticfiles/
 
-# SSL certificates (mai su git)
+# cache immagini (sul server le ricarichi)
+CACHE/
+
+# ---- Certificati locali ----
 cert.pem
 key.pem
 
-# Byte-compiled Python files
-*.pyc
+# ---- Log ----
+*.log
 
-# Django SQLite DB (solo locale)
-db.sqlite3
+# ---- File grossi/temporanei ----
+*.zip
