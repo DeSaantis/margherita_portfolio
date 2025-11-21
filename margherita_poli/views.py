@@ -153,8 +153,7 @@ def create_payment_intent(request):
             amount=amount,
             currency="eur",
             automatic_payment_methods={
-                "enabled": True,
-                "allow_redirects": "never"
+                "enabled": True
             },
         )
         return JsonResponse({"clientSecret": intent.client_secret})

@@ -16,6 +16,7 @@
 	width: fit-content;
 	max-width: 100%;
 	white-space: nowrap;
+	margin-inline: auto;
 }
 
 .a-header__content-item {

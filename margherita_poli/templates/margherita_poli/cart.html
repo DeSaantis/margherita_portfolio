@@ -59,9 +59,19 @@
       </div>
 
       <div class="c-continue">
-        <a href="{% url 'margherita_poli:checkout_cart' %}" class="c-checkout-btn">
-            {% trans "Vai al checkout" %}</a> 
+          {% if items %}
+              <!-- 🔥 Carrello pieno → pulsante attivo -->
+              <a href="{% url 'margherita_poli:checkout_cart' %}" class="c-checkout-btn">
+                  {% trans "Vai al checkout" %}
+              </a>
+          {% else %}
+              <!-- 🔥 Carrello vuoto → pulsante disattivato -->
+              <a class="c-checkout-btn disabled" onclick="return false;">
+                  {% trans "Vai al checkout" %}
+              </a>
+          {% endif %}
       </div>
+
 
     </div>
   </div>

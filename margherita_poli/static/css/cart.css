@@ -113,7 +113,11 @@
   cursor: pointer;
   text-decoration: none;
 }
-
+.c-checkout-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;   /* 🔥 non cliccabile */
+    cursor: default;
+}
 
 @media (min-width: 750px) {
   .c-cart {

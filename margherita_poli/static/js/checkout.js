@@ -208,9 +208,17 @@ function initCollapse() {
 // =========================
 function initStripe() {
 
-    stripe = Stripe("pk_test_51SUtYRGtFhE88jYDzneGUjpCTMqXpkfQRgN2ownK3G10wyYBUUOkJ6pAgn9yzPRvH32jlTKo8pJxIdlpB8Tv1YRd00UPhHnwp5");
+    stripe = Stripe("pk_live_51SUtYGGpafxqtLMfvS64grXhOdn7vuiJnyEmFmtoQejAtLIREbrhiKjJqAEplDBDoIx14FhQ6E4pJSeWd0T6NVUe00OpSEwf96");
 
-    const elements = stripe.elements();
+    const appearance = {
+        theme: "stripe",
+    };
+
+    const elements = stripe.elements({
+        appearance,
+        locale: "auto"
+    });
+
 
     const style = {
         base: {
@@ -280,14 +288,27 @@ function initPaymentSubmit() {
         e.target.disabled = true;
 
         // 1️⃣ Crea PaymentMethod
+        const name = document.getElementById("card-owner").value;
+        const email = document.getElementById("email").value;
+
+        const address = {
+            line1: document.getElementById("indirizzo").value,
+            city: document.getElementById("citta").value,
+            state: document.getElementById("regione").value,
+            postal_code: document.getElementById("cap").value,
+            country: document.getElementById("stato").value,
+        };
+
         const { paymentMethod, error } = await stripe.createPaymentMethod({
             type: "card",
             card: cardNumber,
             billing_details: {
-                name: document.getElementById("card-owner").value,
-                email: document.getElementById("email").value
+                name,
+                email,
+                address
             }
         });
+
 
         if (error) {
             alert(error.message);
@@ -300,8 +321,10 @@ function initPaymentSubmit() {
         // 2️⃣ Richiedi PaymentIntent
         const res = await fetch("/create-payment-intent/", {
             method: "POST",
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({})  // <--- AGGIUNTO
         });
+
 
         const data = await res.json();
         if (data.error) {
@@ -314,8 +337,10 @@ function initPaymentSubmit() {
 
         // 3️⃣ Conferma Pagamento
         const result = await stripe.confirmCardPayment(clientSecret, {
-            payment_method: paymentMethod.id
+            payment_method: paymentMethod.id,
+            return_url: window.location.href  // fallback
         });
+
 
         if (result.error) {
             alert(result.error.message);
