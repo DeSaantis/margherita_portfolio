@@ -7,6 +7,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template.loader import render_to_string
+from django.contrib.auth import authenticate, login
 
 import stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -14,8 +15,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 from decimal import Decimal
 import json
 
-from .forms import PaintingForm
-from .models import Painting, SectionPainting, Illustration, Poem, SectionExhibition, Order, OrderItem, ContactMessage
+from .models import Painting, SectionPainting, Illustration, Poem, SectionExhibition, Order, OrderItem
 
 
 
@@ -303,44 +303,6 @@ def checkout_success(request, order_id):
 
 
 
-
-
-# ---------- PAGINA PER L UTENTE REGISTRATO PER MODIFICARE I DIPINTI
-@login_required
-def paintings_admin(request):
-    """Mostra tutte le sezioni e permette di aggiungere/modificare dipinti"""
-    edit_id = request.GET.get('edit_id')
-    painting = None
-    if edit_id:
-        painting = get_object_or_404(Painting, pk=edit_id)
-
-    if request.method == "POST":
-        if 'edit_id' in request.POST:
-            painting = get_object_or_404(Painting, pk=request.POST['edit_id'])
-            form = PaintingForm(request.POST, request.FILES, instance=painting)
-        else:
-            form = PaintingForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            form.save()
-            if 'edit_id' in request.POST:
-                messages.success(request, "Modifica confermata!")
-            else:
-                messages.success(request, "Nuovo dipinto aggiunto!")
-            return redirect('margherita_poli:paintings_admin')
-    else:
-        form = PaintingForm(instance=painting)
-
-    paintings = Painting.objects.select_related('section').all()
-    sections = SectionPainting.objects.all()
-    return render(request, 'margherita_poli/paintings_admin.html', {
-        'sections': sections,
-        'paintings': paintings,
-        'form': form,
-        'editing': painting is not None,
-    })
-
-
 # ---------- FORM PAGINA TEACHER.HTML ----------
 
 def contatto(request):
@@ -434,14 +396,24 @@ def teacher(request):
     """La home page di Margherita Poli."""
     return render(request, 'margherita_poli/teacher.html', {'current_section':'teacher'})
 
-def aboutme(request):
-    """La home page di Margherita Poli."""
-    return render(request, 'margherita_poli/aboutme.html', {'current_section':'aboutme'})
-
-def contact(request):
-    """La home page di Margherita Poli."""
-    return render(request, 'margherita_poli/contact.html', {'current_section':'contact'})
-
 def prova(request):
     """La home page di Margherita Poli."""
-    return render(request, 'margherita_poli/prova.html')
+    return render(request, 'admin/prova.html')
+
+
+# ============ LOGIN ==============
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect("margherita_poli:dashboard")  # cambia con la tua pagina dopo il login
+        else:
+            return render(request, "login.html", {"error": "Credenziali non valide"})
+
+    return render(request, "login.html")

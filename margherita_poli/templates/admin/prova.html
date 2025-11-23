@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="{% static 'admin/css/prova.css' %}" rel="stylesheet"/>
+  <title>Margherita Poli | Login</title>
+</head>
+<body>
+  <div class="p-container">
+    <div class="p-content">
+      <h2 class="p-content__title">Login</h2>
+
+      {% if error %}
+        <p style="color:red;">{{ error }}</p>
+      {% endif %}
+
+      <form method="POST" class="p-content__form-login">
+        {% csrf_token %}
+
+        <div class="p-campi">
+          <div class="p-campo username">
+            <label for="username">Nome utente</label>
+            <input type="text" id="username" name="username" class="login-field" required>
+          </div>
+
+          <div class="p-campo password">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="login-field" required>
+          </div>
+        </div>
+
+        <div class="p-continue">
+          <button type="submit">Accedi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="{% static 'js/admin/prova.js' %}"></script>
+</body>
+</html>

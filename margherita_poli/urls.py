@@ -14,7 +14,6 @@ urlpatterns = [
     
     
     path('paintings/', views.paintings, name='paintings_all'),
-    path('paintings/admin/', views.paintings_admin, name='paintings_admin'),
 
     path("cart/", views.cart, name="cart"),
     path("cart/add/<int:painting_id>/", views.add_to_cart, name="add_to_cart"),
@@ -25,11 +24,6 @@ urlpatterns = [
     path("checkout/process/", views.process_checkout, name="process_checkout"),
     path("checkout/success/<int:order_id>/", views.checkout_success, name="checkout_success"),
 
-
-
-
-    
-    
     path('poems/', views.poems, name='poems'),
     
     
@@ -41,14 +35,11 @@ urlpatterns = [
     
     
     path('exhibitions/', views.exhibition, name='exhibitions'),
-    
-    
-    path('aboutme/', views.aboutme, name='aboutme'),
-    
-    
-    path('contact/', views.contact, name='contact'),
-    #path('list-drawing/', views.list_drawing, name='list_drawing'),
-    #path('add-section/', views.add_section, name='add_section'),
+
+
+    # ====== Control Panel
+    path('login/', views.login_view, name='login'),
+
 ]
 
 if settings.DEBUG:
