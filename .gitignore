@@ -30,3 +30,6 @@ key.pem
 
 # ---- File grossi/temporanei ----
 *.zip
+
+# ---- File setttings.py ----
+ll_project/settings.py
