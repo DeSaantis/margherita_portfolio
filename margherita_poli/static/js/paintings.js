@@ -55,12 +55,15 @@ function initOpenImage() {
 
       currentPaintingId = id;
 
+      modalImage.src = "";
       modalImage.src = image;
+
       modalTitle.innerHTML = title;
       modalDesc.innerHTML = desc;
       modalDetails.innerHTML = details;
       modalPrice.innerHTML = price;
       modalCartBtn.dataset.id = id;
+
 
       /* 🔥 RESET DEL PULSANTE AD OGNI APERTURA DEL MODALE */
       modalCartBtn.innerText = "Acquista";
