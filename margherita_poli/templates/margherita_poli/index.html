@@ -10,7 +10,32 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}" />
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/png">
+    <link rel="apple-touch-icon" href="{% static 'images/logo.png' %}">
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Margherita Poli",
+          "url": "https://www.margheritapoli.com/",
+          "logo": "https://www.margheritapoli.com/static/images/logo.png",
+          "image": "https://www.margheritapoli.com/static/images/logo.png"
+        }
+    </script>
+    
     <title>Margherita Poli</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RJNDZHH6C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8RJNDZHH6C');
+    </script>
+
   </head>
   <body>
     <!-- ========== overlay pagina per menu mobile ========== -->

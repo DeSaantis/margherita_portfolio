@@ -15,7 +15,18 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 from decimal import Decimal
 import json
 
-from .models import Painting, SectionPainting, Illustration, Poem, SectionExhibition, Order, OrderItem
+from .models import Painting, SectionPainting, Illustration, Poem, SectionExhibition, Order, OrderItem, ContactMessage, QRScan
+
+def qr_redirect(request):
+    # registra la scansione
+    QRScan.objects.create(
+        ip_address=request.META.get("REMOTE_ADDR"),
+        user_agent=request.META.get("HTTP_USER_AGENT", "")
+    )
+
+    # reindirizza alla home (o dove vuoi tu)
+    return redirect("margherita_poli:index")
+
 
 
 
@@ -311,7 +322,14 @@ def contatto(request):
         email = request.POST.get("email")
         messaggio = request.POST.get("messaggio")
 
-        # HTML email
+        # 🔥 Salva nel database
+        ContactMessage.objects.create(
+            fullname=fullname,
+            email=email,
+            message=messaggio
+        )
+
+        # Email HTML
         html_content = render_to_string("emails/contact_teacher.html", {
             "fullname": fullname,
             "email": email,
@@ -323,9 +341,8 @@ def contatto(request):
                 subject="📩 Nuovo messaggio dalla pagina Insegnante",
                 body="",
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[settings.DEFAULT_FROM_EMAIL],  # arriva a te
+                to=[settings.DEFAULT_FROM_EMAIL],
             )
-
             email_message.attach_alternative(html_content, "text/html")
             email_message.send()
 
@@ -399,21 +416,3 @@ def teacher(request):
 def prova(request):
     """La home page di Margherita Poli."""
     return render(request, 'admin/prova.html')
-
-
-# ============ LOGIN ==============
-
-def login_view(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return redirect("margherita_poli:dashboard")  # cambia con la tua pagina dopo il login
-        else:
-            return render(request, "login.html", {"error": "Credenziali non valide"})
-
-    return render(request, "login.html")

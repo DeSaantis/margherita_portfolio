@@ -33,3 +33,6 @@ key.pem
 
 # ---- File setttings.py ----
 ll_project/settings.py
+
+# ---- APP control_panel ----
+control_panel/

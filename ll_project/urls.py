@@ -26,8 +26,8 @@ def home(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('margherita_poli.urls')),
-    path('i18n/', include('django.conf.urls.i18n')),
+    path('controlPanel/', include('control_panel.urls')),
     path('accounts/', include('accounts.urls')),
-    path('', home, name='home'),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('ckeditor5/', include('django_ckeditor_5.urls')),
 ]

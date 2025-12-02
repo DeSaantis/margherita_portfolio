@@ -2,12 +2,16 @@ from django.urls import path, re_path
 from django.conf.urls.static import static
 from django.conf import settings
 
+from margherita_poli.admin import qr_reports_admin
+
 from . import views
 
 app_name = 'margherita_poli'
 urlpatterns = [
     # Home page
     path('', views.index, name='index'),
+    path("qr/", views.qr_redirect, name="qr"),
+    path("qr-admin/", qr_reports_admin.urls),  # <-- QUI
     
     
     path('prova/', views.prova, name='prova'),
@@ -35,10 +39,6 @@ urlpatterns = [
     
     
     path('exhibitions/', views.exhibition, name='exhibitions'),
-
-
-    # ====== Control Panel
-    path('login/', views.login_view, name='login'),
 
 ]
 

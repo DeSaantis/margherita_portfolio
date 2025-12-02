@@ -1,9 +1,54 @@
 from django.contrib import admin
+from django.db.models import Count
+from django.urls import path
+from django.db.models.functions import ExtractYear, ExtractMonth, ExtractDay
+from django.template.response import TemplateResponse
 from django.utils.html import format_html
 from django.utils.text import Truncator
 from django_ckeditor_5.widgets import CKEditor5Widget
 
-from .models import SectionPainting, Painting, Poem, Illustration, Exhibition, SectionExhibition, Order, OrderItem, ContactMessage
+from .models import SectionPainting, Painting, Poem, Illustration, Exhibition, SectionExhibition, Order, OrderItem, ContactMessage, QRScan
+
+@admin.register(QRScan)
+class QRScanAdmin(admin.ModelAdmin):
+    list_display = ("timestamp", "ip_address", "user_agent")
+    ordering = ("-timestamp",)
+
+
+class QRReportsAdminSite(admin.AdminSite):
+    site_header = "QR Reports"
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom = [
+            path("qr-report/", self.admin_view(self.qr_daily_report), name="qr_daily_report")
+        ]
+        return custom + urls
+
+    def qr_daily_report(self, request):
+        summary = (
+            QRScan.objects.annotate(
+                year=ExtractYear("timestamp"),
+                month=ExtractMonth("timestamp"),
+                day=ExtractDay("timestamp"),
+            )
+            .values("year", "month", "day")
+            .annotate(total=Count("id"))
+            .order_by("-year", "-month", "-day")
+        )
+
+        context = dict(
+            self.each_context(request),
+            summary=summary,
+        )
+        return TemplateResponse(request, "admin/qr_daily_summary.html", context)
+
+# crea un'istanza CUSTOM dell'admin
+qr_reports_admin = QRReportsAdminSite(name="qr_reports")
+
+
+# crea un'istanza CUSTOM dell'admin
+qr_reports_admin = QRReportsAdminSite(name="qr_reports")
 
 class SectionPaintingAdmin(admin.ModelAdmin):
     class Media:

@@ -17,6 +17,16 @@ def strip_outer_p(html):
         return ''.join(str(c) for c in soup.contents[0].contents)
     return html
 
+# contatore di scan del qrcode
+
+class QRScan(models.Model):
+    timestamp = models.DateTimeField(auto_now_add=True)
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
+    user_agent = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"Scansione del {self.timestamp}"
+
 
 class SectionPainting(models.Model):
     section = CKEditor5Field(
